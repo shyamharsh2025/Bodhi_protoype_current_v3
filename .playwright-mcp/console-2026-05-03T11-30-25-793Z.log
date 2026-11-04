@@ -1,0 +1,104 @@
+[     199ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:21608
+[  563445ms] [ERROR] Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem. @ http://localhost:5173/node_modules/.vite/deps/chunk-KQSTW7SD.js?v=907ac33c:135
+[  563445ms] [ERROR] Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem. @ http://localhost:5173/node_modules/.vite/deps/chunk-KQSTW7SD.js?v=907ac33c:135
+[  563445ms] TypeError: Cannot read properties of null (reading 'useRef')
+    at useRef (http://localhost:5173/node_modules/.vite/deps/chunk-KQSTW7SD.js?v=907ac33c:1074:29)
+    at useEmblaCarousel (http://localhost:5173/node_modules/.vite/deps/embla-carousel-react.js?v=17918bd0:1679:49)
+    at Carousel (http://localhost:5173/src/app/components/ui/carousel.tsx:44:30)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:15962:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:3680:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:3705:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:3739:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19818:15)
+[  563447ms] [ERROR] Error handled by React Router default ErrorBoundary: TypeError: Cannot read properties of null (reading 'useRef')
+    at useRef (http://localhost:5173/node_modules/.vite/deps/chunk-KQSTW7SD.js?v=907ac33c:1074:29)
+    at useEmblaCarousel (http://localhost:5173/node_modules/.vite/deps/embla-carousel-react.js?v=17918bd0:1679:49)
+    at Carousel (http://localhost:5173/src/app/components/ui/carousel.tsx:44:30)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19169:15) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=b33596d7:6197
+[  563448ms] [ERROR] Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem. @ http://localhost:5173/node_modules/.vite/deps/chunk-KQSTW7SD.js?v=907ac33c:135
+[  563448ms] [ERROR] Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem. @ http://localhost:5173/node_modules/.vite/deps/chunk-KQSTW7SD.js?v=907ac33c:135
+[  563448ms] TypeError: Cannot read properties of null (reading 'useRef')
+    at useRef (http://localhost:5173/node_modules/.vite/deps/chunk-KQSTW7SD.js?v=907ac33c:1074:29)
+    at useEmblaCarousel (http://localhost:5173/node_modules/.vite/deps/embla-carousel-react.js?v=17918bd0:1679:49)
+    at Carousel (http://localhost:5173/src/app/components/ui/carousel.tsx:44:30)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:15962:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:3680:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:3705:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:3739:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19818:15)
+[  563448ms] [ERROR] Error handled by React Router default ErrorBoundary: TypeError: Cannot read properties of null (reading 'useRef')
+    at useRef (http://localhost:5173/node_modules/.vite/deps/chunk-KQSTW7SD.js?v=907ac33c:1074:29)
+    at useEmblaCarousel (http://localhost:5173/node_modules/.vite/deps/embla-carousel-react.js?v=17918bd0:1679:49)
+    at Carousel (http://localhost:5173/src/app/components/ui/carousel.tsx:44:30)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19169:15) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=b33596d7:6197
+[  563449ms] [ERROR] The above error occurred in the <Carousel> component:
+
+    at Carousel (http://localhost:5173/src/app/components/ui/carousel.tsx:35:3)
+    at section
+    at div
+    at div
+    at JourneyScreen (http://localhost:5173/src/app/components/screens/JourneyScreen.tsx?t=1777808388697:92:41)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=b33596d7:6299:26)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=b33596d7:7080:26)
+    at div
+    at div
+    at RootLayout (http://localhost:5173/src/app/components/RootLayout.tsx?t=1777806291934:22:20)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=b33596d7:6299:26)
+    at RenderErrorBoundary (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=b33596d7:6209:5)
+    at DataRoutes (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=b33596d7:6997:3)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=b33596d7:7089:13)
+    at RouterProvider (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=b33596d7:6763:3)
+    at App
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary. @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:14079
+[  563449ms] [ERROR] React Router caught the following error during render TypeError: Cannot read properties of null (reading 'useRef')
+    at useRef (http://localhost:5173/node_modules/.vite/deps/chunk-KQSTW7SD.js?v=907ac33c:1074:29)
+    at useEmblaCarousel (http://localhost:5173/node_modules/.vite/deps/embla-carousel-react.js?v=17918bd0:1679:49)
+    at Carousel (http://localhost:5173/src/app/components/ui/carousel.tsx:44:30)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:19169:15) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=b33596d7:6236
+[  564394ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:21608
+[ 2355682ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:963
+[ 2356673ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:21608
+[60269136ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:963
+[60270041ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:21608
+[74460788ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/src/app/components/screens/JourneyScreen.tsx?t=1777882286442:0
+[74460789ms] [ERROR] [vite] Failed to reload /src/app/components/screens/JourneyScreen.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5173/@vite/client:881
+[93896078ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:963

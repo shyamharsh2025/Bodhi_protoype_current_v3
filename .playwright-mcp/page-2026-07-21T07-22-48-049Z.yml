@@ -1,0 +1,37 @@
+- generic [ref=e3]:
+  - generic [ref=e6]:
+    - generic [ref=e7]: 9:41
+    - img [ref=e14]
+  - button "Go back" [ref=e20] [cursor=pointer]:
+    - img [ref=e21]
+  - main "Enter the code sent to your parent" [ref=e29]:
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - img [ref=e33]
+        - img [ref=e37]
+      - heading "Enter the code sent to your parent" [level=1] [ref=e41]
+      - paragraph [ref=e42]: We sent a 6-digit verification code to
+      - button "Change parent contact, currently your parent or guardian’s mobile" [ref=e43] [cursor=pointer]:
+        - generic [ref=e44]: your parent or guardian’s mobile
+        - img [ref=e45]
+    - textbox "Six-digit parent verification code" [ref=e49]
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - img [ref=e54]
+        - paragraph [ref=e58]:
+          - strong [ref=e59]: Ask your parent or guardian
+          - text: to enter the code sent to their phone.
+      - generic [ref=e60]:
+        - generic [ref=e61]:
+          - img [ref=e62]
+          - text: Code expires in
+          - strong [ref=e65]: 2:45
+        - button "Resend in 0:45" [disabled] [ref=e66]:
+          - img [ref=e67]
+          - text: Resend in 0:45
+    - generic [ref=e72]:
+      - button "Verify & continue →" [disabled] [ref=e73]
+      - generic [ref=e74]:
+        - img [ref=e75]
+        - text: Your information is kept secure.
+    - paragraph [ref=e77]

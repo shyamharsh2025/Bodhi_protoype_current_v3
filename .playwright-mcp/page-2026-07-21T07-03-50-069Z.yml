@@ -1,0 +1,36 @@
+- generic [ref=e3]:
+  - generic [ref=e6]:
+    - generic [ref=e7]: 9:41
+    - img [ref=e14]
+  - button [ref=e20]:
+    - img [ref=e21]
+  - generic [ref=e28]:
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - img [ref=e32]
+        - generic [ref=e35]: A SAFE STEP FOR YOUR ACCOUNT
+      - heading "A parent needs to approve your account" [level=1] [ref=e36]
+      - paragraph [ref=e37]: Enter their details below. We’ll send a one-time code so they can approve your account.
+    - generic [ref=e38]:
+      - group "HOW SHOULD WE CONTACT THEM?" [ref=e39]:
+        - generic [ref=e40]: HOW SHOULD WE CONTACT THEM?
+        - generic [ref=e41]:
+          - button "Mobile number" [pressed] [ref=e42] [cursor=pointer]
+          - button "Email ID" [ref=e43] [cursor=pointer]
+      - generic [ref=e44]:
+        - generic [ref=e45]: PARENT OR GUARDIAN’S MOBILE NUMBER
+        - generic [ref=e46]:
+          - img
+          - textbox "PARENT OR GUARDIAN’S MOBILE NUMBER" [ref=e47]:
+            - /placeholder: +91 98765 43210
+        - paragraph [ref=e48]: Include the country code if you choose mobile.
+    - generic [ref=e49]:
+      - img [ref=e51]
+      - generic [ref=e54]:
+        - paragraph [ref=e55]: Their contact details stay private
+        - generic [ref=e56]:
+          - img [ref=e57]
+          - text: Used only for this approval and verification.
+    - generic [ref=e59]:
+      - button "Send verification code →" [ref=e60] [cursor=pointer]
+      - paragraph [ref=e61]: Your account stays pending until they approve it.

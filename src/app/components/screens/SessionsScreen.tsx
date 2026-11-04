@@ -23,7 +23,7 @@ export default function SessionsScreen() {
 
       {/* Class Status Card */}
       <button
-        onClick={() => navigate('/home/sessions/league')}
+        onClick={() => navigate('/home/sessions/class-circle')}
         className="w-full bg-gradient-to-r from-[#5B4FDB] to-[#3B82F6] rounded-3xl p-6 mb-5 shadow-lg relative overflow-hidden text-left"
       >
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOnJnYigyNTUsMjU1LDI1NSk7c3RvcC1vcGFjaXR5OjAuMSIgLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOnJnYigyNTUsMjU1LDI1NSk7c3RvcC1vcGFjaXR5OjAiIC8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjZykiLz48L3N2Zz4=')] opacity-30"></div>
@@ -44,7 +44,11 @@ export default function SessionsScreen() {
       </button>
 
       {/* Session Notes Card */}
-      <button className="w-full bg-white/60 backdrop-blur-sm rounded-3xl p-5 mb-6 shadow-sm flex items-center justify-between">
+      <button
+        type="button"
+        onClick={() => navigate('/home/sessions/league-empty')}
+        className="w-full bg-white/60 backdrop-blur-sm rounded-3xl p-5 mb-6 shadow-sm flex items-center justify-between transition-transform active:scale-[0.99]"
+      >
         <div className="text-left">
           <h3 className="text-[20px] font-bold text-gray-900 mb-1">Session notes</h3>
           <p className="text-[14px] text-gray-600">Take a pause and reflect</p>
@@ -83,7 +87,7 @@ export default function SessionsScreen() {
         <div className="space-y-4">
           {/* Session 1 */}
           <button
-            onClick={() => navigate('/home/chakra-meditation/root')}
+            onClick={() => navigate('/home/meditation-detail')}
             className="w-full bg-white/60 backdrop-blur-sm rounded-3xl p-5 shadow-sm text-left"
           >
             <div className="flex items-start gap-4 mb-4">
@@ -115,7 +119,7 @@ export default function SessionsScreen() {
 
           {/* Session 2 */}
           <button
-            onClick={() => navigate('/home/chakra-meditation/sacral')}
+            onClick={() => navigate('/home/meditation-detail')}
             className="w-full bg-white/60 backdrop-blur-sm rounded-3xl p-5 shadow-sm text-left"
           >
             <div className="flex items-start gap-4 mb-4">

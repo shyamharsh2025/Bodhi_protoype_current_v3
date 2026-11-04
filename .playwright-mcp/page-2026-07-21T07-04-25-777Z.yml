@@ -1,0 +1,37 @@
+- generic [ref=e197]:
+  - generic [ref=e200]:
+    - generic [ref=e201]: 9:41
+    - img [ref=e208]
+  - button [ref=e214]:
+    - img [ref=e215]
+  - main "Enter the code sent to your parent" [ref=e223]:
+    - generic [ref=e224]:
+      - generic [ref=e225]:
+        - img [ref=e227]
+        - img [ref=e231]
+      - heading "Enter the code sent to your parent" [level=1] [ref=e235]
+      - paragraph [ref=e236]: We sent a 6-digit verification code to
+      - button "Change parent contact, currently +91 98765 43210" [ref=e237] [cursor=pointer]:
+        - generic [ref=e238]: +91 98765 43210
+        - img [ref=e239]
+    - textbox "Six-digit parent verification code" [ref=e243]
+    - generic [ref=e245]:
+      - generic [ref=e246]:
+        - img [ref=e248]
+        - paragraph [ref=e252]:
+          - strong [ref=e253]: Ask your parent or guardian
+          - text: to enter the code sent to their phone.
+      - generic [ref=e254]:
+        - generic [ref=e255]:
+          - img [ref=e256]
+          - text: Code expires in
+          - strong [ref=e259]: 2:45
+        - button "Resend in 0:45" [disabled] [ref=e260]:
+          - img [ref=e261]
+          - text: Resend in 0:45
+    - generic [ref=e266]:
+      - button "Verify & continue →" [disabled] [ref=e267]
+      - generic [ref=e268]:
+        - img [ref=e269]
+        - text: Your information is safe with us.
+    - paragraph [ref=e271]

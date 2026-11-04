@@ -1,0 +1,4 @@
+[     290ms] [LOG] -330 @ https://www.febbox.com/share/0Cgyqfdr:2803
+[   10411ms] [ERROR] User declined or dismissed prompt. API exponential cool down triggered. @ https://www.febbox.com/share/0Cgyqfdr:0
+[   10412ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token. @ https://accounts.google.com/gsi/client:85
+[   28617ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://thumb.febbox.com/thumb_dGh1bWIvMDM4LzEwLzI4LzM4MTAyODM3XzIzX3RodW1iLmpwZz90PTE3NzUwMzA0MTh8MTAwMHw3NQ__.png:0

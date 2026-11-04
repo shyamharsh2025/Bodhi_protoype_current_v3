@@ -1,0 +1,96 @@
+- generic [ref=e3]:
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - generic [ref=e9]: 9:41
+      - generic [ref=e10]:
+        - img [ref=e11]
+        - img [ref=e13]
+        - img [ref=e15]
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - heading "Hey Anusha" [level=1] [ref=e21]
+        - paragraph [ref=e22]: Good Morning
+      - button [ref=e24]:
+        - img [ref=e25]
+    - generic [ref=e31] [cursor=pointer]:
+      - generic [ref=e32]:
+        - heading "You are on a 12 day streak" [level=3] [ref=e33]
+        - img [ref=e34]
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]: S
+          - img [ref=e41]
+        - generic [ref=e43]:
+          - generic [ref=e44]: M
+          - img [ref=e46]
+        - generic [ref=e48]:
+          - generic [ref=e49]: T
+          - img [ref=e51]
+        - generic [ref=e53]:
+          - generic [ref=e54]: W
+          - img [ref=e56]
+        - generic [ref=e58]:
+          - generic [ref=e59]: T
+          - img [ref=e61]
+        - generic [ref=e63]:
+          - generic [ref=e64]: TODAY
+          - img [ref=e66]
+        - generic [ref=e69]: S
+        - generic [ref=e72]: S
+    - button "DOPA METER Feeling Good 78 % TODAY Update your check-in" [ref=e75]:
+      - generic [ref=e76]:
+        - generic [ref=e78]:
+          - generic [ref=e79]:
+            - generic [ref=e80]: DOPA METER
+            - heading "Feeling Good" [level=3] [ref=e81]
+          - generic [ref=e82]:
+            - img [ref=e83]
+            - generic [ref=e86]:
+              - text: "78"
+              - generic [ref=e87]: "%"
+            - generic [ref=e88]: TODAY
+        - generic [ref=e89]:
+          - generic [ref=e90]: Update your check-in
+          - img [ref=e91]
+    - generic [ref=e93]:
+      - generic [ref=e94]:
+        - heading "All Sessions" [level=2] [ref=e95]
+        - button "VIEW ALL" [ref=e96]
+      - generic [ref=e97]:
+        - button "FOCUS Root Chakra 15 MIN 75%" [ref=e98]:
+          - generic [ref=e101]: FOCUS
+          - generic [ref=e102]:
+            - heading "Root Chakra" [level=4] [ref=e103]
+            - generic [ref=e104]:
+              - generic [ref=e105]: 15 MIN
+              - generic [ref=e106]: 75%
+        - button "MEDITATE Sacral Chakra 10 MIN 30%" [ref=e109]:
+          - generic [ref=e112]: MEDITATE
+          - generic [ref=e113]:
+            - heading "Sacral Chakra" [level=4] [ref=e114]
+            - generic [ref=e115]:
+              - generic [ref=e116]: 10 MIN
+              - generic [ref=e117]: 30%
+    - generic [ref=e120]:
+      - generic [ref=e121]:
+        - heading "New For You" [level=2] [ref=e122]
+        - button "VIEW ALL" [ref=e123]
+      - generic [ref=e127]:
+        - heading "Chakra Reset Series" [level=3] [ref=e128]
+        - paragraph [ref=e129]: SERIES • 7 SESSION
+        - button "Begin" [ref=e130]
+  - generic [ref=e133]:
+    - button "Today" [ref=e134]:
+      - img [ref=e136]
+      - generic [ref=e142]: Today
+    - button "Explore" [ref=e143]:
+      - img [ref=e145]
+      - generic [ref=e148]: Explore
+    - button [ref=e149]:
+      - img [ref=e151]
+    - button "Sessions" [ref=e153]:
+      - img [ref=e155]
+      - generic [ref=e158]: Sessions
+    - button "Journey" [ref=e159]:
+      - img [ref=e161]
+      - generic [ref=e164]: Journey

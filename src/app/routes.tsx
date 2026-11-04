@@ -10,13 +10,16 @@ import OnboardingMessageScreen from './components/screens/OnboardingMessageScree
 import OnboardingValuesScreen from './components/screens/OnboardingValuesScreen';
 import OnboardingFinalScreen from './components/screens/OnboardingFinalScreen';
 import OnboardingProfileScreen from './components/screens/OnboardingProfileScreen';
+import ParentConsentScreen from './components/screens/questionnaire/ParentConsentScreen';
+import ParentVerificationScreen from './components/screens/questionnaire/ParentVerificationScreen';
+import ParentAccountApprovalScreen from './components/screens/questionnaire/ParentAccountApprovalScreen';
+import ParentConsentSuccessScreen from './components/screens/questionnaire/ParentConsentSuccessScreen';
 import TodayScreen from './components/screens/TodayScreen';
 import BodhiEmptyCaseHomeScreen from './components/screens/BodhiEmptyCaseHomeScreen';
 import SessionsScreen from './components/screens/SessionsScreen';
-import LeagueScreen from './components/screens/LeagueScreen';
-import AssignIndividuallyScreen from './components/screens/AssignIndividuallyScreen';
+import ClassCircleScreen from './components/screens/ClassCircleScreen';
 import MemberProfileScreen from './components/screens/MemberProfileScreen';
-import BroScreen from './components/screens/BroScreen';
+import AICompanionScreen from './components/screens/AICompanionScreen';
 import ExploreScreen from './components/screens/ExploreScreen';
 import ThoughtBankScreen from './components/screens/ThoughtBankScreen';
 import ThoughtBankRecentEntriesScreen from './components/screens/ThoughtBankRecentEntriesScreen';
@@ -31,6 +34,7 @@ import AwarenessObservationPlaylistScreen from './components/screens/AwarenessOb
 import RegulationControlPlaylistScreen from './components/screens/RegulationControlPlaylistScreen';
 import GroundChakraMeditationScreen from './components/screens/GroundChakraMeditationScreen';
 import ChakraMeditationPlayerScreen from './components/screens/ChakraMeditationPlayerScreen';
+import MeditationDetailScreen from './components/screens/MeditationDetailScreen';
 import MeditationSessionScreen from './components/screens/MeditationSessionScreen';
 import FocusSprintScreen from './components/screens/FocusSprintScreen';
 import FocusStartOptionsScreen from './components/screens/FocusStartOptionsScreen';
@@ -144,6 +148,22 @@ export const router = createBrowserRouter([
     Component: BasicInfoScreen,
   },
   {
+    path: '/questionnaire/parent-consent',
+    Component: ParentConsentScreen,
+  },
+  {
+    path: '/questionnaire/parent-verification',
+    Component: ParentVerificationScreen,
+  },
+  {
+    path: '/questionnaire/parent-approval',
+    Component: ParentAccountApprovalScreen,
+  },
+  {
+    path: '/questionnaire/parent-success',
+    Component: ParentConsentSuccessScreen,
+  },
+  {
     path: '/questionnaire/behavior-1',
     Component: BehaviorQuestion1Screen,
   },
@@ -177,12 +197,10 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: TodayScreen },
       { path: 'sessions', Component: SessionsScreen },
-      { path: 'sessions/class-circle', element: <Navigate to="/home/sessions/league" replace /> },
-      { path: 'sessions/league', Component: LeagueScreen },
-      { path: 'sessions/assign-individually', Component: AssignIndividuallyScreen },
+      { path: 'sessions/class-circle', Component: ClassCircleScreen },
+      { path: 'sessions/league-empty', element: <ClassCircleScreen variant="empty" /> },
       { path: 'sessions/member-profile', Component: MemberProfileScreen },
-      { path: 'bro', Component: BroScreen },
-      { path: 'ai-companion', element: <Navigate to="/home/bro" replace /> },
+      { path: 'ai-companion', Component: AICompanionScreen },
       { path: 'explore', Component: ExploreScreen },
       { path: 'explore/new-for-you', Component: NewForYouScreen },
       { path: 'explore/thought-bank', Component: ThoughtBankScreen },
@@ -205,7 +223,7 @@ export const router = createBrowserRouter([
       { path: 'regulation-control/:regulation', Component: GroundChakraMeditationScreen },
       { path: 'chakra-meditation/:chakra/session', Component: ChakraMeditationPlayerScreen },
       { path: 'chakra-meditation/:chakra', Component: GroundChakraMeditationScreen },
-      { path: 'meditation-detail', element: <Navigate to="/home/chakra-meditation/root" replace /> },
+      { path: 'meditation-detail', Component: MeditationDetailScreen },
       { path: 'meditation-session', Component: MeditationSessionScreen },
       { path: 'focus-sprint', Component: FocusSprintScreen },
       { path: 'focus-start-options', Component: FocusStartOptionsScreen },

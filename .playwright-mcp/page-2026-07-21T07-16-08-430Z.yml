@@ -1,0 +1,25 @@
+- generic [ref=e3]:
+  - generic [ref=e6]:
+    - generic [ref=e7]: 9:41
+    - img [ref=e14]
+  - button [ref=e20]:
+    - img [ref=e21]
+  - main "You’re all set!" [ref=e30]:
+    - generic [ref=e31]:
+      - img [ref=e34]
+      - img [ref=e42]
+      - img [ref=e44]
+    - generic [ref=e46]:
+      - generic [ref=e47]:
+        - img [ref=e48]
+        - text: CONSENT VERIFIED
+      - heading "You’re all set!" [level=1] [ref=e51]
+      - paragraph [ref=e52]: Thanks for approving. Your child’s Bodhi journey is ready to begin.
+    - region "What happens next?" [ref=e53]:
+      - img [ref=e55]
+      - generic [ref=e58]:
+        - heading "What happens next?" [level=2] [ref=e59]
+        - paragraph [ref=e60]: We’ll personalize the experience for your child with a few quick wellbeing questions.
+    - generic [ref=e61]:
+      - button "Continue →" [ref=e62] [cursor=pointer]
+      - button "Go back" [ref=e63] [cursor=pointer]

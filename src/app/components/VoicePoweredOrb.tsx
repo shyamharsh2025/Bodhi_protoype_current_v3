@@ -3,7 +3,6 @@ import { Renderer, Program, Mesh, Triangle, Vec3 } from "ogl";
 
 interface VoicePoweredOrbProps {
   className?: string;
-  variant?: "fluid" | "energySphere";
   hue?: number;
   enableVoiceControl?: boolean;
   voiceSensitivity?: number;
@@ -14,7 +13,6 @@ interface VoicePoweredOrbProps {
 
 export const VoicePoweredOrb: FC<VoicePoweredOrbProps> = ({
   className,
-  variant = "fluid",
   hue = 0,
   enableVoiceControl = true,
   voiceSensitivity = 1.5,
@@ -188,170 +186,6 @@ export const VoicePoweredOrb: FC<VoicePoweredOrbProps> = ({
     }
   `;
 
-  const energySphereFrag = `
-    precision highp float;
-
-    uniform float iTime;
-    uniform vec3 iResolution;
-    uniform float hue;
-    uniform float hover;
-    uniform float rot;
-    uniform float hoverIntensity;
-    varying vec2 vUv;
-
-    vec3 rgb2yiq(vec3 c) {
-      float y = dot(c, vec3(0.299, 0.587, 0.114));
-      float i = dot(c, vec3(0.596, -0.274, -0.322));
-      float q = dot(c, vec3(0.211, -0.523, 0.312));
-      return vec3(y, i, q);
-    }
-
-    vec3 yiq2rgb(vec3 c) {
-      float r = c.x + 0.956 * c.y + 0.621 * c.z;
-      float g = c.x - 0.272 * c.y - 0.647 * c.z;
-      float b = c.x - 1.106 * c.y + 1.703 * c.z;
-      return vec3(r, g, b);
-    }
-
-    vec3 adjustHue(vec3 color, float hueDeg) {
-      float hueRad = hueDeg * 3.14159265 / 180.0;
-      vec3 yiq = rgb2yiq(color);
-      float cosA = cos(hueRad);
-      float sinA = sin(hueRad);
-      float i = yiq.y * cosA - yiq.z * sinA;
-      float q = yiq.y * sinA + yiq.z * cosA;
-      yiq.y = i;
-      yiq.z = q;
-      return yiq2rgb(yiq);
-    }
-
-    vec3 hash33(vec3 p3) {
-      p3 = fract(p3 * vec3(0.1031, 0.11369, 0.13787));
-      p3 += dot(p3, p3.yxz + 19.19);
-      return -1.0 + 2.0 * fract(vec3(
-        p3.x + p3.y,
-        p3.x + p3.z,
-        p3.y + p3.z
-      ) * p3.zyx);
-    }
-
-    float snoise3(vec3 p) {
-      const float K1 = 0.333333333;
-      const float K2 = 0.166666667;
-      vec3 i = floor(p + (p.x + p.y + p.z) * K1);
-      vec3 d0 = p - (i - (i.x + i.y + i.z) * K2);
-      vec3 e = step(vec3(0.0), d0 - d0.yzx);
-      vec3 i1 = e * (1.0 - e.zxy);
-      vec3 i2 = 1.0 - e.zxy * (1.0 - e);
-      vec3 d1 = d0 - (i1 - K2);
-      vec3 d2 = d0 - (i2 - K1);
-      vec3 d3 = d0 - 0.5;
-      vec4 h = max(0.6 - vec4(
-        dot(d0, d0),
-        dot(d1, d1),
-        dot(d2, d2),
-        dot(d3, d3)
-      ), 0.0);
-      vec4 n = h * h * h * h * vec4(
-        dot(d0, hash33(i)),
-        dot(d1, hash33(i + i1)),
-        dot(d2, hash33(i + i2)),
-        dot(d3, hash33(i + 1.0))
-      );
-      return dot(vec4(31.316), n);
-    }
-
-    mat3 rotY(float a) {
-      float s = sin(a);
-      float c = cos(a);
-      return mat3(c, 0.0, -s, 0.0, 1.0, 0.0, s, 0.0, c);
-    }
-
-    mat3 rotX(float a) {
-      float s = sin(a);
-      float c = cos(a);
-      return mat3(1.0, 0.0, 0.0, 0.0, c, -s, 0.0, s, c);
-    }
-
-    vec2 energySheet(vec3 p, float scale, float drift, float phase, float width) {
-      float flow = snoise3(p * 1.08 + vec3(phase, iTime * 0.12 * drift, -phase)) * 0.34;
-      float foldA = sin(p.x * scale + p.z * (scale * 0.52) + phase + iTime * 0.28 * drift);
-      float foldB = sin(p.x * (scale * 0.48) - p.z * (scale * 0.84) + phase * 1.71 - iTime * 0.22 * drift);
-      float surface = p.y * 0.92 + foldA * 0.28 + foldB * 0.18 + flow;
-      float d = abs(surface);
-      float body = 1.0 - smoothstep(width, width * 2.45, d);
-      float edge = smoothstep(width * 0.38, width * 0.92, d) * (1.0 - smoothstep(width * 0.92, width * 1.42, d));
-      float falloff = smoothstep(1.08, 0.18, length(p.xz) * 0.72 + abs(p.y) * 0.16);
-      return vec2(max(body, 0.0) * falloff, max(edge, 0.0) * falloff);
-    }
-
-    void main() {
-      vec2 fragCoord = vUv * iResolution.xy;
-      vec2 center = iResolution.xy * 0.5;
-      float size = min(iResolution.x, iResolution.y);
-      vec2 uv = (fragCoord - center) / size * 2.25;
-
-      float voiceLift = hover * hoverIntensity;
-      float radius = length(uv);
-      float sphereMask = 1.0 - smoothstep(0.965, 1.006, radius);
-      float outerGlow = exp(-max(radius - 0.86, 0.0) * 4.3) * smoothstep(1.32, 0.62, radius);
-
-      if (radius > 1.42 && outerGlow < 0.004) {
-        discard;
-      }
-
-      float z = sqrt(max(1.0 - radius * radius, 0.0));
-      vec3 normal = normalize(vec3(uv, z));
-      vec3 moving = rotY(iTime * 0.34 + rot * 0.72) * rotX(sin(iTime * 0.23) * 0.34) * normal;
-      vec3 counter = rotY(-iTime * 0.22 - rot * 0.45) * rotX(0.62) * normal;
-
-      vec3 deep = adjustHue(vec3(0.022, 0.034, 0.128), hue);
-      vec3 indigo = adjustHue(vec3(0.082, 0.088, 0.420), hue);
-      vec3 violet = adjustHue(vec3(0.650, 0.290, 1.000), hue);
-      vec3 cyan = adjustHue(vec3(0.160, 0.700, 0.980), hue);
-      vec3 whiteBlue = vec3(0.900, 0.975, 1.000);
-
-      float fresnel = pow(1.0 - max(normal.z, 0.0), 2.55);
-      float rim = smoothstep(0.52, 1.0, fresnel);
-      float depth = smoothstep(-0.18, 0.92, normal.z);
-      float shade = 0.58 + 0.42 * depth;
-      float plasma = snoise3(moving * 3.1 + vec3(0.0, iTime * 0.28, iTime * 0.12)) * 0.5 + 0.5;
-
-      vec2 s1 = energySheet(moving, 3.05, 1.0, 0.0, 0.22);
-      vec2 s2 = energySheet(counter.zxy, 3.75, -0.82, 2.2, 0.20);
-      vec2 s3 = energySheet(moving.yzx, 2.55, 0.64, 4.8, 0.24);
-      float fabric = clamp(s1.x * 0.70 + s2.x * 0.58 + s3.x * 0.46, 0.0, 1.0);
-      float fabricEdge = clamp(s1.y * 0.88 + s2.y * 0.70 + s3.y * 0.58, 0.0, 1.0);
-      float fabricTexture = (snoise3(moving * 9.0 + vec3(iTime * 0.11, 2.0, -iTime * 0.08)) * 0.5 + 0.5) * fabric;
-      float energy = clamp(fabric * 0.72 + fabricEdge * 0.42 + fabricTexture * 0.10, 0.0, 1.0);
-      energy *= smoothstep(0.98, 0.18, radius);
-
-      float hotEdge = pow(max(0.0, dot(normalize(vec3(-0.45, 0.60, 0.70)), normal)), 5.0);
-      float coolEdge = pow(max(0.0, dot(normalize(vec3(0.65, -0.35, 0.72)), normal)), 5.0);
-
-      vec3 color = mix(deep, indigo, 0.42 + plasma * 0.30);
-      color *= shade;
-      color += violet * (fabric * 0.54 + fabricEdge * 0.55 + hotEdge * 0.50);
-      color += cyan * (fabric * 0.12 + fabricEdge * 0.42 + coolEdge * 0.44 + fabricTexture * 0.10);
-      color += whiteBlue * pow(fabricEdge, 1.82) * (0.30 + voiceLift * 0.18);
-      color += mix(violet, cyan, 0.30 + plasma * 0.18) * rim * (0.74 + voiceLift * 0.28);
-      color += indigo * rim * 0.18;
-      color += whiteBlue * pow(rim, 2.8) * 0.20;
-
-      float glass = smoothstep(0.95, 0.18, radius) * 0.18;
-      color = mix(color, color + vec3(0.25, 0.36, 0.66), glass);
-
-      vec3 glowColor = cyan * 0.22 + violet * 0.54 + whiteBlue * 0.08;
-      color += glowColor * outerGlow * (0.46 + voiceLift * 0.48);
-      color *= 1.02;
-
-      float alpha = sphereMask * (0.90 + rim * 0.10) + outerGlow * 0.52;
-      alpha *= smoothstep(1.42, 0.42, radius);
-
-      gl_FragColor = vec4(color, clamp(alpha, 0.0, 1.0));
-    }
-  `;
-
   const analyzeAudio = () => {
     if (!analyserRef.current || !dataArrayRef.current) return 0;
     analyserRef.current.getByteFrequencyData(dataArrayRef.current);
@@ -448,7 +282,7 @@ export const VoicePoweredOrb: FC<VoicePoweredOrbProps> = ({
       const geometry = new Triangle(glContext);
       program = new Program(glContext, {
         vertex: vert,
-        fragment: variant === "energySphere" ? energySphereFrag : frag,
+        fragment: frag,
         uniforms: {
           iTime: { value: 0 },
           iResolution: {
@@ -561,7 +395,7 @@ export const VoicePoweredOrb: FC<VoicePoweredOrbProps> = ({
       }
       return () => {};
     }
-  }, [variant, hue, enableVoiceControl, voiceSensitivity, maxRotationSpeed, maxHoverIntensity]);
+  }, [hue, enableVoiceControl, voiceSensitivity, maxRotationSpeed, maxHoverIntensity]);
 
   return <div ref={ctnDom} className={`w-full h-full relative ${className ?? ""}`} />;
 };

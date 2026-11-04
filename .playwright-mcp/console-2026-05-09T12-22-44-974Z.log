@@ -1,0 +1,3 @@
+[     305ms] [LOG] -330 @ https://www.febbox.com/share/0Cgyqfdr:2803
+[  477252ms] [ERROR] Prompt dismissed. API exponential cool down not triggered. @ https://www.febbox.com/share/0Cgyqfdr:0
+[  477254ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token. @ https://accounts.google.com/gsi/client:85

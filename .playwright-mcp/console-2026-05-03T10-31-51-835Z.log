@@ -1,0 +1,20 @@
+[      75ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:21608
+[   36096ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=b33596d7:21608
+[ 1795811ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/src/app/components/screens/JourneyScreen.tsx?t=1777806107628:0
+[ 1795811ms] [ERROR] [vite] Failed to reload /src/app/components/screens/JourneyScreen.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5173/@vite/client:881
+[ 4078357ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:21608
+[ 5869638ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:963
+[ 5870516ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:21608
+[63783094ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:963
+[63783895ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:21608
+[77974657ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/src/app/components/screens/JourneyScreen.tsx?t=1777882286442:0
+[77974657ms] [ERROR] [vite] Failed to reload /src/app/components/screens/JourneyScreen.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5173/@vite/client:881
+[97410059ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:963
+[97411034ms] [ERROR] WebSocket connection to 'ws://localhost:5173/' failed: Error during WebSocket handshake: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:5173/@vite/client:1034
+[97412340ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:21608
+[102958326ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:963
+[102959648ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:21608
+[109449888ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:963
+[109450553ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:21608
+[111200842ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:963
+[111201511ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:21608

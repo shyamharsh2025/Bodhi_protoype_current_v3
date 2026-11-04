@@ -1,0 +1,309 @@
+[     303ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:21608
+[ 2141188ms] ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053105165:639:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14630:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15972:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3680:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3705:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3739:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19818:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+[ 2141186ms] [ERROR] Error handled by React Router default ErrorBoundary: ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053105165:639:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14630:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15972:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18927:28)
+    at flushSyncCallbacks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:9166:30) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6197
+[ 2141191ms] ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053105165:639:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14630:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15972:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3680:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3705:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3739:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19818:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+[ 2141187ms] [ERROR] Error handled by React Router default ErrorBoundary: ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053105165:639:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14630:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15972:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18786:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18932:28) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6197
+[ 2141188ms] [ERROR] The above error occurred in the <DopaMeterScreen> component:
+
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053105165:112:20)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6299:26)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:7080:26)
+    at div
+    at MotionDOMComponent (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8882:40)
+    at PopChildMeasure (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8021:23)
+    at PopChild (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8048:21)
+    at PresenceChild (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8098:24)
+    at AnimatePresence (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8175:26)
+    at div
+    at div
+    at RootLayout (http://localhost:5173/src/app/components/RootLayout.tsx?t=1777980680360:49:20)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6299:26)
+    at RenderErrorBoundary (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6209:5)
+    at DataRoutes (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6997:3)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:7089:13)
+    at RouterProvider (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6763:3)
+    at App
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary. @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14079
+[ 2141188ms] [ERROR] React Router caught the following error during render ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053105165:639:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14630:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15972:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18786:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18932:28) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6236
+[ 2185932ms] ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053149877:669:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3680:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3705:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3739:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19818:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+[ 2185918ms] [ERROR] Error handled by React Router default ErrorBoundary: ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053149877:669:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18927:28)
+    at flushSyncCallbacks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:9166:30) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6197
+[ 2185933ms] ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053149877:669:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3680:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3705:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3739:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19818:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+[ 2185923ms] [ERROR] Error handled by React Router default ErrorBoundary: ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053149877:669:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18786:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18932:28) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6197
+[ 2185926ms] [ERROR] The above error occurred in the <DopaMeterScreen> component:
+
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053149877:142:20)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6299:26)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:7080:26)
+    at div
+    at MotionDOMComponent (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8882:40)
+    at PopChildMeasure (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8021:23)
+    at PopChild (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8048:21)
+    at PresenceChild (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8098:24)
+    at AnimatePresence (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8175:26)
+    at div
+    at div
+    at RootLayout (http://localhost:5173/src/app/components/RootLayout.tsx?t=1777980680360:49:20)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6299:26)
+    at RenderErrorBoundary (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6209:5)
+    at DataRoutes (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6997:3)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:7089:13)
+    at RouterProvider (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6763:3)
+    at App
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary. @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14079
+[ 2185926ms] [ERROR] React Router caught the following error during render ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053149877:669:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18786:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18932:28) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6236
+[ 2234924ms] ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053199176:689:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3680:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3705:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3739:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19818:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+[ 2234921ms] [ERROR] Error handled by React Router default ErrorBoundary: ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053199176:689:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18927:28)
+    at flushSyncCallbacks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:9166:30) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6197
+[ 2234926ms] ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053199176:689:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3680:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3705:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3739:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19818:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+[ 2234923ms] [ERROR] Error handled by React Router default ErrorBoundary: ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053199176:689:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18786:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18932:28) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6197
+[ 2234923ms] [ERROR] The above error occurred in the <DopaMeterScreen> component:
+
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053199176:162:20)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6299:26)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:7080:26)
+    at div
+    at MotionDOMComponent (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8882:40)
+    at PopChildMeasure (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8021:23)
+    at PopChild (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8048:21)
+    at PresenceChild (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8098:24)
+    at AnimatePresence (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8175:26)
+    at div
+    at div
+    at RootLayout (http://localhost:5173/src/app/components/RootLayout.tsx?t=1777980680360:49:20)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6299:26)
+    at RenderErrorBoundary (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6209:5)
+    at DataRoutes (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6997:3)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:7089:13)
+    at RouterProvider (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6763:3)
+    at App
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary. @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14079
+[ 2234924ms] [ERROR] React Router caught the following error during render ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053199176:689:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18786:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18932:28) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6236
+[ 2274943ms] ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053239151:691:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3680:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3705:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3739:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19818:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+[ 2274942ms] [ERROR] Error handled by React Router default ErrorBoundary: ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053239151:691:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18927:28)
+    at flushSyncCallbacks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:9166:30) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6197
+[ 2274944ms] ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053239151:691:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3680:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3705:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:3739:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19818:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+[ 2274944ms] [ERROR] Error handled by React Router default ErrorBoundary: ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053239151:691:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18786:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18932:28) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6197
+[ 2274944ms] [ERROR] The above error occurred in the <DopaMeterScreen> component:
+
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053239151:162:20)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6299:26)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:7080:26)
+    at div
+    at MotionDOMComponent (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8882:40)
+    at PopChildMeasure (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8021:23)
+    at PopChild (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8048:21)
+    at PresenceChild (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8098:24)
+    at AnimatePresence (http://localhost:5173/node_modules/.vite/deps/motion_react.js?v=907ac33c:8175:26)
+    at div
+    at div
+    at RootLayout (http://localhost:5173/src/app/components/RootLayout.tsx?t=1777980680360:49:20)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6299:26)
+    at RenderErrorBoundary (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6209:5)
+    at DataRoutes (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6997:3)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:7089:13)
+    at RouterProvider (http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6763:3)
+    at App
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary. @ http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14079
+[ 2274944ms] [ERROR] React Router caught the following error during render ReferenceError: moods is not defined
+    at DopaMeterScreen (http://localhost:5173/src/app/components/screens/DopaMeterScreen.tsx?t=1778053239151:691:90)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:11596:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:14974:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:15962:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19806:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19251:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19190:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:19169:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18786:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-TPJYOTJD.js?v=907ac33c:18932:28) @ http://localhost:5173/node_modules/.vite/deps/react-router.js?v=907ac33c:6236

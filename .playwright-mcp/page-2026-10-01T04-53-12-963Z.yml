@@ -1,0 +1,122 @@
+- generic [ref=e3]:
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - generic [ref=e9]: 9:41
+      - generic "Phone status" [ref=e10]:
+        - img [ref=e11]
+        - img [ref=e13]
+        - img [ref=e15]
+    - banner [ref=e19]:
+      - button "Go back" [ref=e20]:
+        - img [ref=e21]
+      - generic [ref=e23]:
+        - heading "League" [level=1] [ref=e24]
+        - paragraph [ref=e25]: Grade 8A · 30 students
+      - generic [ref=e26]:
+        - button "Notifications" [ref=e27]:
+          - img [ref=e28]
+        - button "Open profile" [ref=e31]:
+          - img [ref=e32]
+    - main [ref=e35]:
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - img [ref=e42]
+          - generic [ref=e46]: Today's Class Status
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - heading "Your class is building consistency together" [level=2] [ref=e49]
+            - paragraph [ref=e50]: 60% of Grade 8A completed today
+          - generic "18 of 30 completed" [ref=e52]:
+            - img [ref=e54]
+            - generic [ref=e57]:
+              - generic [ref=e58]: 18/30
+              - generic [ref=e59]: Completed
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - img [ref=e63]
+            - generic [ref=e67]: "30"
+            - generic [ref=e68]: Students
+          - generic [ref=e69]:
+            - img [ref=e71]
+            - generic [ref=e73]: "18"
+            - generic [ref=e74]: Completed
+          - generic [ref=e75]:
+            - img [ref=e77]
+            - generic [ref=e80]: "12"
+            - generic [ref=e81]: Pending
+          - generic [ref=e82]:
+            - img [ref=e84]
+            - generic [ref=e86]: 67%
+            - generic [ref=e87]: 7-Day Avg
+      - generic [ref=e88]:
+        - generic [ref=e89]:
+          - img "A person meditating in a calm space" [ref=e91]
+          - generic [ref=e92]:
+            - paragraph [ref=e93]: Today's Practice
+            - generic [ref=e94]:
+              - img [ref=e95]
+              - text: Assigned
+          - generic [ref=e98]:
+            - heading "5-Min Calm Reset" [level=2] [ref=e99]
+            - paragraph [ref=e100]: Ready for today's class practice
+        - generic [ref=e101]:
+          - button "Start Practice" [ref=e102]:
+            - img [ref=e103]
+            - generic [ref=e105]: Start Practice
+          - button "Choose your own" [ref=e106]:
+            - img [ref=e107]
+            - generic [ref=e113]: Choose your own
+      - generic [ref=e114]:
+        - heading "Class Members" [level=2] [ref=e115]
+        - generic [ref=e116]:
+          - button "KP Kabir Patel Completed today 17-day streak" [ref=e117]:
+            - generic [ref=e118]: KP
+            - generic [ref=e120]:
+              - heading "Kabir Patel" [level=3] [ref=e121]
+              - generic [ref=e123]: Completed today
+              - generic [ref=e125]:
+                - img [ref=e126]
+                - text: 17-day streak
+            - img [ref=e128]
+          - button "RS Riya Shah Completed today 12-day streak" [ref=e130]:
+            - generic [ref=e131]: RS
+            - generic [ref=e133]:
+              - heading "Riya Shah" [level=3] [ref=e134]
+              - generic [ref=e136]: Completed today
+              - generic [ref=e138]:
+                - img [ref=e139]
+                - text: 12-day streak
+            - img [ref=e141]
+          - button "AM Aarav Mehta Yet to show up 4-day streak" [ref=e143]:
+            - generic [ref=e144]: AM
+            - generic [ref=e146]:
+              - heading "Aarav Mehta" [level=3] [ref=e147]
+              - generic [ref=e149]: Yet to show up
+              - generic [ref=e151]:
+                - img [ref=e152]
+                - text: 4-day streak
+            - img [ref=e154]
+          - button "MJ Meera Joshi Yet to show up 3-day streak" [ref=e156]:
+            - generic [ref=e157]: MJ
+            - generic [ref=e159]:
+              - heading "Meera Joshi" [level=3] [ref=e160]
+              - generic [ref=e162]: Yet to show up
+              - generic [ref=e164]:
+                - img [ref=e165]
+                - text: 3-day streak
+            - img [ref=e167]
+  - generic [ref=e171]:
+    - button "Today" [ref=e172]:
+      - img [ref=e174]
+      - generic [ref=e180]: Today
+    - button "Explore" [ref=e181]:
+      - img [ref=e183]
+      - generic [ref=e186]: Explore
+    - button [ref=e187]:
+      - img [ref=e189]
+    - button "Sessions" [ref=e191]:
+      - img [ref=e193]
+      - generic [ref=e196]: Sessions
+    - button "Journey" [ref=e197]:
+      - img [ref=e199]
+      - generic [ref=e202]: Journey

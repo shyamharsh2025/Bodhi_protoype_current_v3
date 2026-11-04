@@ -44,7 +44,7 @@ export default function TodayScreen() {
         <div className="flex items-center justify-between px-6 pt-4 pb-5">
           <div>
             <h1 className="text-[24px] font-bold text-[#5840D4] leading-8" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Hey teacher
+              Hey Anusha
             </h1>
             <p className="text-[14px] font-medium text-[#2D2E34] leading-5 mt-1" style={{ fontFamily: 'Inter, sans-serif' }}>
               Good Morning
@@ -237,7 +237,7 @@ export default function TodayScreen() {
           <div className="flex gap-4">
             {/* Root Chakra Card */}
             <button
-              onClick={() => navigate('/home/chakra-meditation/root')}
+              onClick={() => navigate('/home/meditation-detail')}
               className="flex-1 bg-white border border-[rgba(232,231,241,0.8)] rounded-[22px] p-4 shadow-[0px_8px_22px_0px_rgba(84,75,187,0.10)] min-h-[146px] flex flex-col text-left"
             >
               <div className="flex items-start justify-between mb-5">
@@ -275,7 +275,7 @@ export default function TodayScreen() {
 
             {/* Sacral Chakra Card */}
             <button
-              onClick={() => navigate('/home/chakra-meditation/sacral')}
+              onClick={() => navigate('/home/meditation-detail')}
               className="flex-1 bg-white border border-[rgba(232,231,241,0.8)] rounded-[22px] p-4 shadow-[0px_8px_22px_0px_rgba(84,75,187,0.10)] min-h-[146px] flex flex-col text-left"
             >
               <div className="flex items-start justify-between mb-5">
@@ -324,15 +324,7 @@ export default function TodayScreen() {
             </button>
           </div>
 
-          <div
-            role="button"
-            tabIndex={0}
-            onClick={() => navigate('/home/chakra-meditation')}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter' || event.key === ' ') navigate('/home/chakra-meditation');
-            }}
-            className="cursor-pointer bg-white rounded-[22px] border border-[#E8E7F1] shadow-[0px_8px_22px_0px_rgba(84,75,187,0.10)] overflow-hidden"
-          >
+          <div className="bg-white rounded-[22px] border border-[#E8E7F1] shadow-[0px_8px_22px_0px_rgba(84,75,187,0.10)] overflow-hidden">
             <div
               className="h-[160px] relative overflow-hidden"
               style={{
@@ -350,10 +342,6 @@ export default function TodayScreen() {
                 SERIES • 7 SESSION
               </p>
               <button
-                onClick={(event) => {
-                  event.stopPropagation();
-                  navigate('/home/chakra-meditation');
-                }}
                 className="w-full py-3 rounded-full text-center"
                 style={{
                   backgroundImage: 'linear-gradient(8.34389deg, rgb(84, 75, 187) 0%, rgb(154, 148, 255) 100%)',
