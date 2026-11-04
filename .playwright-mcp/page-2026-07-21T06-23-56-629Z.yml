@@ -1,6 +1,0 @@
-- generic [ref=e3]:
-  - generic [ref=e6]:
-    - img [ref=e8]
-    - heading "Bodhi" [level=1] [ref=e10]
-    - paragraph [ref=e11]: A system to help you focus, reset, and stay consistent.
-  - button "Begin" [ref=e13]

@@ -11,11 +11,6 @@ export default function BasicInfoScreen() {
   const [age, setAge] = useState('');
 
   const handleContinue = () => {
-    if (age && Number(age) < 18) {
-      navigate('/questionnaire/parent-consent');
-      return;
-    }
-
     navigate('/questionnaire/behavior-1');
   };
 

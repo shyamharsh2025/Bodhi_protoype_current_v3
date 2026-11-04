@@ -8,7 +8,7 @@ export default function BottomNavigation() {
   const tabs = [
     { id: 'today', label: 'Today', icon: Sun, path: '/home' },
     { id: 'explore', label: 'Explore', icon: Compass, path: '/home/explore' },
-    { id: 'ai', label: '', icon: Sparkles, path: '/home/ai-companion', isCenter: true },
+    { id: 'bro', label: '', icon: Sparkles, path: '/home/bro', isCenter: true },
     { id: 'sessions', label: 'Sessions', icon: Clock, path: '/home/sessions' },
     { id: 'journey', label: 'Journey', icon: TrendingUp, path: '/home/journey' },
   ];

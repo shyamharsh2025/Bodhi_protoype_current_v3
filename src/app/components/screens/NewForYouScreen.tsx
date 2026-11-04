@@ -51,7 +51,7 @@ export default function NewForYouScreen() {
         {sessions.map((session) => (
           <button
             key={session.id}
-            onClick={() => navigate('/home/meditation-detail')}
+            onClick={() => navigate('/home/chakra-meditation/root')}
             className="w-full bg-white/70 backdrop-blur-sm rounded-3xl p-4 shadow-sm flex items-center gap-4 text-left"
           >
             {/* Gradient Orb */}

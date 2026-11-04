@@ -8,7 +8,6 @@ interface OnboardingLayoutProps {
   currentStep: number;
   onBack?: () => void;
   showProgress?: boolean;
-  visualVariant?: 'default' | 'consent';
 }
 
 export default function OnboardingLayout({
@@ -17,10 +16,8 @@ export default function OnboardingLayout({
   currentStep,
   onBack,
   showProgress = true,
-  visualVariant = 'default',
 }: OnboardingLayoutProps) {
   const navigate = useNavigate();
-  const isConsent = visualVariant === 'consent';
 
   const handleBack = () => {
     if (onBack) {
@@ -31,10 +28,10 @@ export default function OnboardingLayout({
   };
 
   return (
-    <div className={`relative min-h-dvh flex flex-col overflow-hidden ${isConsent ? 'bg-[#FBFCFF]' : 'bg-gradient-to-br from-[#E8ECFE] via-[#EEF2FF] to-[#E0E7FF]'}`}>
+    <div className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-br from-[#E8ECFE] via-[#EEF2FF] to-[#E0E7FF]">
       {/* Subtle background orbs */}
-      <div className={`absolute right-0 top-0 h-[320px] w-[320px] rounded-full blur-[110px] ${isConsent ? 'bg-[#DCEAFF]/75' : 'bg-gradient-to-br from-[#C084FC]/20 to-[#A78BFA]/20'}`}></div>
-      <div className={`absolute bottom-0 left-0 h-[320px] w-[320px] rounded-full blur-[110px] ${isConsent ? 'bg-[#E8F1FF]/80' : 'bg-gradient-to-br from-[#5B4FDB]/10 to-[#3B82F6]/10'}`}></div>
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-br from-[#C084FC]/20 to-[#A78BFA]/20 rounded-full blur-[100px]"></div>
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gradient-to-br from-[#5B4FDB]/10 to-[#3B82F6]/10 rounded-full blur-[100px]"></div>
 
       {/* Status Bar */}
       <div className="relative z-10 flex items-center justify-between px-8 pt-4 pb-2">
@@ -57,20 +54,18 @@ export default function OnboardingLayout({
       <div className="relative z-10 px-6 pt-4 pb-6">
         <div className="flex items-center justify-between mb-6">
           <button
-            type="button"
-            aria-label="Go back"
             onClick={handleBack}
-            className={`flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border shadow-[0_6px_18px_rgba(70,64,120,0.08)] backdrop-blur-sm transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5B4FDB] focus-visible:ring-offset-2 ${isConsent ? 'border-[#ECECF3] bg-white/90 hover:bg-white' : 'border-white/70 bg-white/55 hover:bg-white/75'}`}
+            className="w-10 h-10 rounded-full bg-white/50 backdrop-blur-sm flex items-center justify-center shadow-sm hover:bg-white/70 transition-all"
           >
             <ArrowLeft className="w-5 h-5 text-[#5B4FDB]" />
           </button>
-          {showProgress && <ProgressDots total={totalSteps} current={currentStep} visualVariant={visualVariant} />}
+          {showProgress && <ProgressDots total={totalSteps} current={currentStep} />}
           <div className="w-10"></div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-0 flex-1 flex flex-col px-6 pb-6">
+      <div className="relative z-10 flex-1 flex flex-col px-6 pb-6">
         {children}
       </div>
 

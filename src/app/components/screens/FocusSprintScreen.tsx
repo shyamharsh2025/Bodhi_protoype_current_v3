@@ -16,7 +16,7 @@ export default function FocusSprintScreen() {
         background: 'linear-gradient(to bottom, #FAFBFF 0%, #F2F0FF 45%, #F8F7FF 100%)',
       }}
     >
-      <div className="relative max-w-[440px] mx-auto px-5 pt-[58px] pb-32">
+      <div className="relative max-w-[440px] mx-auto px-5 pt-[58px] pb-8">
         {/* Decorative wave */}
         <div
           className="pointer-events-none absolute right-0 w-[210px] h-[105px] opacity-40 blur-[2px]"

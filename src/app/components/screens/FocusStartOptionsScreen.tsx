@@ -54,7 +54,7 @@ export default function FocusStartOptionsScreen() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 px-7 pt-8 pb-32 max-w-[440px] mx-auto">
+      <div className="relative z-10 px-7 pt-8 pb-8 max-w-[440px] mx-auto">
         <h2
           className="text-white text-center"
           style={{

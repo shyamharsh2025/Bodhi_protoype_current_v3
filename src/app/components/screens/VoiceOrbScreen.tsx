@@ -20,9 +20,12 @@ export default function VoiceOrbScreen() {
 
       <div className="flex flex-col items-center space-y-8 w-full max-w-md">
         <div className="relative" style={{ width: 'min(384px, 80vw)', aspectRatio: '1 / 1' }}>
+          <div className="pointer-events-none absolute inset-[5%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.72)_0%,rgba(134,196,255,0.22)_30%,rgba(88,64,212,0.22)_54%,transparent_74%)] blur-2xl" />
+          <div className="pointer-events-none absolute inset-[14%] rounded-full bg-[#05091F]/[0.04] blur-xl" />
           <VoicePoweredOrb
+            variant="energySphere"
             enableVoiceControl={isRecording}
-            className=""
+            className="relative z-10"
             onVoiceDetected={setVoiceDetected}
           />
         </div>
