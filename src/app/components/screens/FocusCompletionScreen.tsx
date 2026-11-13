@@ -1,5 +1,8 @@
 import { ChevronLeft, BarChart3, Check, CheckCircle2, Lock, ChevronRight } from 'lucide-react';
+import { AnimatePresence } from 'motion/react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import ActivityFeedbackSheet from '../ActivityFeedbackSheet';
 
 const CONFETTI = [
   { x: 12, y: 24, c: '#6D5BFF', r: -18, w: 10, h: 3 },
@@ -18,6 +21,19 @@ const CONFETTI = [
 
 export default function FocusCompletionScreen() {
   const navigate = useNavigate();
+  const [showFeedback, setShowFeedback] = useState(false);
+  const focusSession = (() => {
+    try {
+      return JSON.parse(sessionStorage.getItem('bodhi-active-focus-session') ?? '{}') as {
+        title?: string;
+        durationLabel?: string;
+      };
+    } catch {
+      return {};
+    }
+  })();
+  const focusTitle = focusSession.title ?? 'Math Assignment – Chapter 3';
+  const focusDuration = focusSession.durationLabel ?? '45 min';
 
   return (
     <div
@@ -179,7 +195,7 @@ export default function FocusCompletionScreen() {
       {/* Bottom buttons */}
       <div className="relative z-10 mt-auto mx-8 mb-3">
         <button
-          onClick={() => navigate('/home')}
+          onClick={() => setShowFeedback(true)}
           className="w-full h-[56px] rounded-[18px] active:scale-[0.98] transition-transform"
           style={{
             background: 'linear-gradient(135deg, #7B68FF 0%, #543BEE 100%)',
@@ -215,6 +231,17 @@ export default function FocusCompletionScreen() {
           100% { transform: scale(1); opacity: 1; }
         }
       `}</style>
+
+      <AnimatePresence>
+        {showFeedback && (
+          <ActivityFeedbackSheet
+            activity="focus-sprint"
+            activityTitle={focusTitle}
+            durationLabel={focusDuration}
+            onSave={() => navigate('/home/karma-reward')}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

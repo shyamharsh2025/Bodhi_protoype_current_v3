@@ -1,8 +1,38 @@
 import { ArrowRight, ArrowUpRight, Bell } from 'lucide-react';
+import { motion, useReducedMotion } from 'motion/react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
+import rootChakraImage from '../../../imports/ReturnUserHome/680b9473c856efcb97e710b14b817e94ed6c94f3.png';
+import sacralChakraImage from '../../../imports/ReturnUserHome/a284d845041011ceb06c656399145b8c5c74bc5d.png';
+import PersonalLibraryCard from '../PersonalLibraryCard';
 
 export default function TodayScreen() {
   const navigate = useNavigate();
+  const shouldReduceMotion = useReducedMotion();
+  const forYouRef = useRef<HTMLDivElement>(null);
+  const [forYouSlide, setForYouSlide] = useState(0);
+
+  const updateForYouSlide = () => {
+    const carousel = forYouRef.current;
+    if (!carousel) return;
+    const cards = Array.from(carousel.children) as HTMLElement[];
+    const closest = cards.reduce(
+      (best, card, index) => {
+        const distance = Math.abs(card.offsetLeft - carousel.offsetLeft - carousel.scrollLeft);
+        return distance < best.distance ? { index, distance } : best;
+      },
+      { index: 0, distance: Number.POSITIVE_INFINITY },
+    );
+    setForYouSlide(closest.index);
+  };
+
+  const goToForYouSlide = (index: number) => {
+    const carousel = forYouRef.current;
+    const card = carousel?.children[index] as HTMLElement | undefined;
+    if (!carousel || !card) return;
+    carousel.scrollTo({ left: card.offsetLeft - carousel.offsetLeft, behavior: 'smooth' });
+    setForYouSlide(index);
+  };
 
   const weekDays = [
     { label: 'S', active: true, filled: 0.2 },
@@ -16,10 +46,17 @@ export default function TodayScreen() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-white pb-6">
+    <div
+      className="relative min-h-screen overflow-hidden pb-6"
+      style={{
+        background:
+          'linear-gradient(180deg, #EAF3FF 0%, #F7FAFF 22%, #FFFFFF 48%, #FAFAFF 74%, #FFFFFF 100%)',
+      }}
+    >
       {/* Background Decorative Blobs */}
-      <div className="absolute top-[-70px] left-[38%] w-[280px] h-[280px] bg-[rgba(102,163,255,0.14)] rounded-full blur-[48px] pointer-events-none" />
-      <div className="absolute top-[520px] left-[-90px] w-[300px] h-[300px] bg-[rgba(104,152,249,0.12)] rounded-full blur-[52px] pointer-events-none" />
+      <div className="pointer-events-none absolute right-[-120px] top-[-100px] h-[300px] w-[300px] rounded-full bg-[#CFE4FF]/45 blur-[76px]" />
+      <div className="pointer-events-none absolute left-[-150px] top-[430px] h-[340px] w-[340px] rounded-full bg-[#DDD6FF]/30 blur-[88px]" />
+      <div className="pointer-events-none absolute right-[-150px] top-[820px] h-[320px] w-[320px] rounded-full bg-[#CAE9FF]/28 blur-[90px]" />
 
       <div className="relative z-10">
         {/* Status Bar */}
@@ -51,19 +88,32 @@ export default function TodayScreen() {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <button className="w-11 h-11 rounded-full bg-white border border-[rgba(232,231,241,0.85)] flex items-center justify-center shadow-[0px_6px_16px_0px_rgba(84,75,187,0.07)]">
+            <button
+              aria-label="Notifications"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/90 bg-white/82 shadow-[0_14px_28px_rgba(42,48,90,0.12),0_6px_14px_rgba(84,75,187,0.09),inset_0_1px_0_rgba(255,255,255,0.98)] backdrop-blur-xl transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5840D4]"
+            >
               <Bell className="w-[18px] h-[18px] text-[#5840D4]" strokeWidth={2} />
             </button>
-            <div className="w-11 h-11 rounded-full border-2 border-[rgba(88,64,212,0.28)] bg-[#D2BE9F] shadow-[0px_6px_16px_0px_rgba(84,75,187,0.08)]" />
+            <button
+              aria-label="Open teacher profile"
+              onClick={() => navigate('/home/profile')}
+              className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-[linear-gradient(145deg,#F1EDFF_0%,#DED7FF_100%)] text-[13px] font-extrabold text-[#5840D4] shadow-[0_14px_28px_rgba(42,48,90,0.14),0_6px_14px_rgba(84,75,187,0.12),inset_0_1px_0_rgba(255,255,255,0.96)] transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5840D4]"
+            >
+              AP
+            </button>
           </div>
         </div>
 
         {/* Streak Section */}
         <div className="mx-6 mb-6">
-          <div className="bg-white border border-[#E8E7F1] rounded-[22px] shadow-[0px_8px_24px_0px_rgba(84,75,187,0.08)] overflow-hidden">
+          <div
+            className="relative overflow-hidden rounded-[22px] border-[1.5px] border-[#D5D2EA]/75 bg-white/74 shadow-[0_18px_38px_rgba(42,48,90,0.10),0_7px_18px_rgba(84,75,187,0.08),inset_0_1px_0_rgba(255,255,255,0.98)] backdrop-blur-xl"
+          >
+            <div className="pointer-events-none absolute -right-16 -top-20 h-44 w-44 rounded-full bg-[#D7E8FF]/46 blur-3xl" />
+            <div className="pointer-events-none absolute inset-[1px] rounded-[20px] ring-1 ring-inset ring-[#DCD9F3]/45" />
             <div
               onClick={() => navigate('/home/voice-orb')}
-              className="px-4 pt-4 pb-4 cursor-pointer"
+              className="relative cursor-pointer px-4 pb-4 pt-4 transition active:scale-[0.99]"
             >
               <div className="flex items-center justify-between mb-5 pl-2">
                 <h3 className="text-[14px] font-semibold text-[#2D2E34] leading-5" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -113,9 +163,11 @@ export default function TodayScreen() {
 
         {/* Dopa Meter */}
         <div className="mx-6 mb-7">
-          <button
+          <motion.button
             onClick={() => navigate('/home/dopa-meter')}
-            className="w-full h-[128px] rounded-[22px] shadow-[0px_10px_26px_0px_rgba(84,75,187,0.16)] relative overflow-hidden text-left"
+            whileTap={shouldReduceMotion ? undefined : { scale: 0.985, y: 1 }}
+            transition={{ type: 'spring', stiffness: 520, damping: 34 }}
+            className="relative h-[128px] w-full overflow-hidden rounded-[22px] border border-white/55 text-left shadow-[0_20px_38px_rgba(42,48,90,0.17),0_10px_24px_rgba(84,75,187,0.16),inset_0_1px_0_rgba(255,255,255,0.26)] transition active:scale-[0.99]"
             style={{
               backgroundImage: 'linear-gradient(108.358deg, rgb(88, 64, 212) 3.9747%, rgb(0, 153, 191) 111.33%)',
             }}
@@ -128,6 +180,8 @@ export default function TodayScreen() {
               return (
                 <div className="relative h-full">
                   <div className="absolute inset-0 bg-white/[0.04]" />
+                  <div className="pointer-events-none absolute -right-8 -top-14 h-36 w-36 rounded-full bg-white/12 blur-2xl" />
+                  <div className="pointer-events-none absolute left-[-20px] top-[-36px] h-24 w-40 rotate-[-12deg] bg-[linear-gradient(100deg,transparent,rgba(255,255,255,0.10),transparent)] blur-xl" />
                   <div className="relative h-[92px] flex items-center justify-between gap-5 px-6">
                     <div className="flex min-w-0 flex-col items-start justify-center">
                       <div
@@ -220,15 +274,18 @@ export default function TodayScreen() {
                 </div>
               );
             })()}
-          </button>
+          </motion.button>
         </div>
 
         {/* All Sessions */}
         <div className="mx-6 mb-7">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-[18px] font-bold text-[#2D2E34] leading-7" style={{ fontFamily: 'Inter, sans-serif' }}>
-              All Sessions
-            </h2>
+            <div className="flex items-center gap-2.5">
+              <span className="h-5 w-1 rounded-full bg-[linear-gradient(180deg,#7659E8_0%,#4C8AF2_100%)] shadow-[0_4px_10px_rgba(88,64,212,0.22)]" aria-hidden="true" />
+              <h2 className="text-[18px] font-bold text-[#2D2E34] leading-7" style={{ fontFamily: 'Inter, sans-serif' }}>
+                All Sessions
+              </h2>
+            </div>
             <button className="text-[10px] font-bold text-[#544BBB] uppercase tracking-[0.4px] leading-3" style={{ fontFamily: 'Inter, sans-serif' }}>
               VIEW ALL
             </button>
@@ -236,134 +293,209 @@ export default function TodayScreen() {
 
           <div className="flex gap-4">
             {/* Root Chakra Card */}
-            <button
+            <motion.button
               onClick={() => navigate('/home/chakra-meditation/root')}
-              className="flex-1 bg-white border border-[rgba(232,231,241,0.8)] rounded-[22px] p-4 shadow-[0px_8px_22px_0px_rgba(84,75,187,0.10)] min-h-[146px] flex flex-col text-left"
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.975, y: 1 }}
+              transition={{ type: 'spring', stiffness: 520, damping: 34 }}
+              className="relative flex min-h-[146px] flex-1 flex-col overflow-hidden rounded-[22px] border-[1.5px] border-[#D7D4EB]/75 bg-white/76 p-4 text-left shadow-[0_16px_34px_rgba(42,48,90,0.10),0_7px_17px_rgba(84,75,187,0.08),inset_0_1px_0_rgba(255,255,255,0.98)] backdrop-blur-xl transition active:scale-[0.985]"
             >
-              <div className="flex items-start justify-between mb-5">
-                <div className="w-11 h-11 rounded-full bg-[#D9D9D9] shadow-[inset_0px_2px_4px_0px_rgba(0,0,0,0.04)]" />
-                <div className="bg-[rgba(88,64,212,0.08)] px-2.5 py-1 rounded-full">
+              <div className="pointer-events-none absolute -right-10 -top-12 h-28 w-28 rounded-full bg-[#DED8FF]/42 blur-2xl" />
+              <div className="relative mb-5 flex items-start justify-between">
+                <div className="h-11 w-11 overflow-hidden rounded-full border-2 border-white bg-[#E8E4FA] shadow-[0_9px_18px_rgba(84,75,187,0.14),inset_0_1px_0_rgba(255,255,255,0.92)]">
+                  <img src={rootChakraImage} alt="" className="h-full w-full object-cover" />
+                </div>
+                <div className="rounded-full border border-white/90 bg-[#F0EDFF]/78 px-2.5 py-1 shadow-[0_5px_12px_rgba(84,75,187,0.07)]">
                   <span className="text-[10px] font-bold text-[#5840D4] uppercase tracking-[0px] leading-3" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    FOCUS
+                    MEDITATION
                   </span>
                 </div>
               </div>
 
-              <div className="flex-1 flex flex-col justify-end">
+              <div className="relative flex flex-1 flex-col justify-end">
                 <h4 className="text-[14px] font-bold text-[#2D2E34] leading-5 mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
                   Root Chakra
                 </h4>
-                <div className="flex items-center justify-between text-[12px] mb-2">
-                  <span className="font-semibold text-[#5A5B62] uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    15 MIN
+                <div className="mb-2 flex items-center justify-between text-[12px]">
+                  <span className="rounded-full border border-white/90 bg-white/70 px-2 py-0.5 font-bold text-[#666979] shadow-[0_4px_10px_rgba(84,75,187,0.06)]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    18 MIN
                   </span>
-                  <span className="font-bold text-[#5840D4]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  <span className="rounded-full bg-[#ECE8FF]/80 px-2 py-0.5 font-extrabold text-[#5840D4]" style={{ fontFamily: 'Inter, sans-serif' }}>
                     75%
                   </span>
                 </div>
                 <div className="bg-[#E8E7F1] h-1.5 rounded-full overflow-hidden">
                   <div
-                    className="h-full rounded-full"
+                    className="relative h-full overflow-hidden rounded-full"
                     style={{
                       width: '75%',
                       backgroundImage: 'linear-gradient(152.195deg, rgb(88, 64, 212) 3.9747%, rgb(0, 153, 191) 111.33%)',
                     }}
-                  />
+                  >
+                    <motion.span
+                      aria-hidden="true"
+                      className="absolute inset-y-0 left-[-45%] w-[42%] skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/75 to-transparent"
+                      initial={false}
+                      animate={shouldReduceMotion ? { opacity: 0 } : { x: ['0%', '360%'], opacity: [0, 0.85, 0] }}
+                      transition={{ duration: 1.25, delay: 0.55, ease: 'easeOut' }}
+                    />
+                  </div>
                 </div>
               </div>
-            </button>
+            </motion.button>
 
             {/* Sacral Chakra Card */}
-            <button
+            <motion.button
               onClick={() => navigate('/home/chakra-meditation/sacral')}
-              className="flex-1 bg-white border border-[rgba(232,231,241,0.8)] rounded-[22px] p-4 shadow-[0px_8px_22px_0px_rgba(84,75,187,0.10)] min-h-[146px] flex flex-col text-left"
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.975, y: 1 }}
+              transition={{ type: 'spring', stiffness: 520, damping: 34 }}
+              className="relative flex min-h-[146px] flex-1 flex-col overflow-hidden rounded-[22px] border-[1.5px] border-[#D7D4EB]/75 bg-white/76 p-4 text-left shadow-[0_16px_34px_rgba(42,48,90,0.10),0_7px_17px_rgba(84,75,187,0.08),inset_0_1px_0_rgba(255,255,255,0.98)] backdrop-blur-xl transition active:scale-[0.985]"
             >
-              <div className="flex items-start justify-between mb-5">
-                <div className="w-11 h-11 rounded-full bg-[#D2BE9F] shadow-[inset_0px_2px_4px_0px_rgba(0,0,0,0.04)]" />
-                <div className="bg-[rgba(88,64,212,0.08)] px-2.5 py-1 rounded-full">
+              <div className="pointer-events-none absolute -right-10 -top-12 h-28 w-28 rounded-full bg-[#D2ECFF]/46 blur-2xl" />
+              <div className="relative mb-5 flex items-start justify-between">
+                <div className="h-11 w-11 overflow-hidden rounded-full border-2 border-white bg-[#F3E4CC] shadow-[0_9px_18px_rgba(124,97,58,0.12),inset_0_1px_0_rgba(255,255,255,0.92)]">
+                  <img src={sacralChakraImage} alt="" className="h-full w-full object-cover" />
+                </div>
+                <div className="rounded-full border border-white/90 bg-[#F0EDFF]/78 px-2.5 py-1 shadow-[0_5px_12px_rgba(84,75,187,0.07)]">
                   <span className="text-[10px] font-bold text-[#5840D4] uppercase tracking-[0px] leading-3" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    MEDITATE
+                    MEDITATION
                   </span>
                 </div>
               </div>
 
-              <div className="flex-1 flex flex-col justify-end">
+              <div className="relative flex flex-1 flex-col justify-end">
                 <h4 className="text-[14px] font-bold text-[#2D2E34] leading-5 mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
                   Sacral Chakra
                 </h4>
-                <div className="flex items-center justify-between text-[12px] mb-2">
-                  <span className="font-semibold text-[#5A5B62] uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    10 MIN
+                <div className="mb-2 flex items-center justify-between text-[12px]">
+                  <span className="rounded-full border border-white/90 bg-white/70 px-2 py-0.5 font-bold text-[#666979] shadow-[0_4px_10px_rgba(84,75,187,0.06)]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    15 MIN
                   </span>
-                  <span className="font-bold text-[#5840D4]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  <span className="rounded-full bg-[#ECE8FF]/80 px-2 py-0.5 font-extrabold text-[#5840D4]" style={{ fontFamily: 'Inter, sans-serif' }}>
                     30%
                   </span>
                 </div>
                 <div className="bg-[#E8E7F1] h-1.5 rounded-full overflow-hidden">
                   <div
-                    className="h-full rounded-full"
+                    className="relative h-full overflow-hidden rounded-full"
                     style={{
                       width: '30%',
                       backgroundImage: 'linear-gradient(127.173deg, rgb(88, 64, 212) 3.9747%, rgb(0, 153, 191) 111.33%)',
                     }}
-                  />
+                  >
+                    <motion.span
+                      aria-hidden="true"
+                      className="absolute inset-y-0 left-[-45%] w-[42%] skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/75 to-transparent"
+                      initial={false}
+                      animate={shouldReduceMotion ? { opacity: 0 } : { x: ['0%', '360%'], opacity: [0, 0.85, 0] }}
+                      transition={{ duration: 1.25, delay: 0.72, ease: 'easeOut' }}
+                    />
+                  </div>
                 </div>
               </div>
-            </button>
+            </motion.button>
           </div>
         </div>
 
-        {/* New For You */}
-        <div className="mx-6">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-[18px] font-bold text-[#2D2E34] leading-7" style={{ fontFamily: 'Inter, sans-serif' }}>
-              New For You
-            </h2>
+        {/* For You */}
+        <div className="ml-6">
+          <div className="mr-6 flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2.5">
+              <span className="h-5 w-1 rounded-full bg-[linear-gradient(180deg,#7659E8_0%,#4C8AF2_100%)] shadow-[0_4px_10px_rgba(88,64,212,0.22)]" aria-hidden="true" />
+              <h2 className="text-[18px] font-bold text-[#2D2E34] leading-7" style={{ fontFamily: 'Inter, sans-serif' }}>
+                For You
+              </h2>
+            </div>
             <button className="text-[10px] font-bold text-[#5840D4] uppercase tracking-[0.4px] leading-3" style={{ fontFamily: 'Inter, sans-serif' }}>
               VIEW ALL
             </button>
           </div>
 
           <div
-            role="button"
-            tabIndex={0}
-            onClick={() => navigate('/home/chakra-meditation')}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter' || event.key === ' ') navigate('/home/chakra-meditation');
-            }}
-            className="cursor-pointer bg-white rounded-[22px] border border-[#E8E7F1] shadow-[0px_8px_22px_0px_rgba(84,75,187,0.10)] overflow-hidden"
+            ref={forYouRef}
+            onScroll={updateForYouSlide}
+            className="scrollbar-hide -my-8 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain py-8 pr-6 scroll-smooth"
+            aria-label="For You carousel"
           >
-            <div
-              className="h-[160px] relative overflow-hidden"
+            <motion.div
+              role="button"
+              tabIndex={0}
+              onClick={() => navigate('/home/chakra-meditation')}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') navigate('/home/chakra-meditation');
+              }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.985, y: 1 }}
+              transition={{ type: 'spring', stiffness: 520, damping: 34 }}
+              className="h-[232px] w-[321px] shrink-0 snap-start cursor-pointer overflow-hidden rounded-[22px] bg-white"
               style={{
-                backgroundImage: 'linear-gradient(140.729deg, rgb(154, 148, 255) 0%, rgb(101, 76, 161) 100%)',
+                boxShadow:
+                  '0 8px 22px rgba(42,48,90,0.08), 0 3px 10px rgba(84,75,187,0.065), inset 0 1px 0 rgba(255,255,255,0.96)',
+                border: '1.5px solid rgba(188,183,232,0.78)',
               }}
             >
-              <div className="absolute inset-0 bg-[#A59D94]" />
-            </div>
-
-            <div className="p-5">
-              <h3 className="text-[18px] font-bold text-[#2D2E34] leading-7 mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Chakra Reset Series
-              </h3>
-              <p className="text-[12px] font-semibold text-[#654CA1] tracking-[0.3px] uppercase mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
-                SERIES • 7 SESSION
-              </p>
-              <button
-                onClick={(event) => {
-                  event.stopPropagation();
-                  navigate('/home/chakra-meditation');
-                }}
-                className="w-full py-3 rounded-full text-center"
+              <div
+                className="relative h-[108px] overflow-hidden"
                 style={{
-                  backgroundImage: 'linear-gradient(8.34389deg, rgb(84, 75, 187) 0%, rgb(154, 148, 255) 100%)',
+                  background: 'linear-gradient(135deg, #E8ECFE 0%, #BFD8FF 52%, #8171F2 100%)',
                 }}
               >
-                <span className="text-[14px] font-bold text-[#F5F1FF] leading-5" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Begin
-                </span>
+                <div className="absolute left-3 top-3 z-10 rounded-full border border-white/80 bg-white/82 px-3 py-1 shadow-[0_7px_16px_rgba(42,48,90,0.10)] backdrop-blur-md">
+                  <span className="text-[10px] font-extrabold uppercase tracking-[0.45px] text-[#5B4FDB]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Recommended
+                  </span>
+                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  alt=""
+                  onError={(event) => {
+                    event.currentTarget.style.display = 'none';
+                  }}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(21,26,77,0.02)_0%,rgba(21,26,77,0.04)_50%,rgba(21,26,77,0.20)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 h-px bg-white/70" />
+              </div>
+
+              <div className="bg-white px-5 py-3">
+                <h3 className="text-[18px] leading-6 text-[#2D2E34]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 850 }}>
+                  Chakra Reset Series
+                </h3>
+                <p className="mt-1 text-[12px] font-extrabold uppercase tracking-[0.5px] text-[#6D55D8]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  PERSONALISED FOR YOU • 7 SESSIONS
+                </p>
+                <button
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    navigate('/home/chakra-meditation');
+                  }}
+                  className="mt-2.5 flex h-10 w-full items-center justify-center rounded-full text-center"
+                  style={{
+                    background: 'linear-gradient(135deg, #8171F2 0%, #5B4FDB 52%, #4D86F7 100%)',
+                    boxShadow: '0 12px 22px rgba(42,48,90,0.16), 0 10px 20px rgba(84,75,187,0.25), inset 0 1px 0 rgba(255,255,255,0.30)',
+                  }}
+                >
+                  <span className="text-[14px] font-extrabold leading-5 text-white" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Begin
+                  </span>
+                </button>
+              </div>
+            </motion.div>
+
+            <PersonalLibraryCard kind="favourites" onClick={() => navigate('/home/explore/favourites')} />
+            <PersonalLibraryCard kind="downloads" onClick={() => navigate('/home/explore/downloads')} />
+          </div>
+
+          <div className="mr-6 mt-1 flex h-8 items-center justify-center gap-2" aria-label={`Slide ${forYouSlide + 1} of 3`}>
+            {[0, 1, 2].map((index) => (
+              <button
+                key={index}
+                type="button"
+                aria-label={`Go to slide ${index + 1}`}
+                onClick={() => goToForYouSlide(index)}
+                className="flex h-8 w-8 items-center justify-center rounded-full"
+              >
+                <span className={`h-2 rounded-full transition-all ${forYouSlide === index ? 'w-6 bg-[#5840D4]' : 'w-2 bg-[#CBC7DF]'}`} />
               </button>
-            </div>
+            ))}
           </div>
         </div>
       </div>

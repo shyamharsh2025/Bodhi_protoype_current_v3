@@ -1,0 +1,5 @@
+@keyframes karma-perimeter-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -10,7 +10,10 @@ import {
   Sparkles,
   Sun,
 } from 'lucide-react';
+import { AnimatePresence } from 'motion/react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import ActivityFeedbackSheet from '../ActivityFeedbackSheet';
 
 const moods = [
   { label: 'Calm', icon: Leaf, selected: true },
@@ -21,6 +24,20 @@ const moods = [
 
 export default function ThoughtBankWriteEntryScreen() {
   const navigate = useNavigate();
+  const [entry, setEntry] = useState('');
+  const [showFeedback, setShowFeedback] = useState(false);
+
+  const saveEntry = () => {
+    if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+    sessionStorage.setItem(
+      'bodhi-last-thought-bank-entry',
+      JSON.stringify({
+        body: entry,
+        savedAt: new Date().toISOString(),
+      }),
+    );
+    setShowFeedback(true);
+  };
 
   return (
     <div className="relative min-h-screen bg-white pb-8">
@@ -103,6 +120,8 @@ export default function ThoughtBankWriteEntryScreen() {
 
           <section className="relative mb-5 min-h-[360px] overflow-hidden rounded-[22px] border border-[rgba(232,231,241,0.8)] bg-white shadow-[0px_8px_22px_0px_rgba(84,75,187,0.10)]">
             <textarea
+              value={entry}
+              onChange={(event) => setEntry(event.target.value)}
               className="relative z-10 h-[312px] w-full resize-none bg-transparent px-5 pt-5 text-[14px] font-medium leading-5 text-[#2D2E34] outline-none placeholder:text-[#9A98B8]"
               style={{ fontFamily: 'Inter, sans-serif' }}
               placeholder="Write freely..."
@@ -123,7 +142,7 @@ export default function ThoughtBankWriteEntryScreen() {
           </section>
 
           <button
-            onClick={() => navigate('/home/explore/thought-bank')}
+            onClick={saveEntry}
             className="mb-4 flex h-14 w-full items-center justify-center gap-3 rounded-full shadow-[0px_10px_24px_0px_rgba(84,75,187,0.22)]"
             style={{ backgroundImage: 'linear-gradient(8.34389deg, rgb(84, 75, 187) 0%, rgb(154, 148, 255) 100%)' }}
           >
@@ -142,6 +161,17 @@ export default function ThoughtBankWriteEntryScreen() {
           </button>
         </main>
       </div>
+
+      <AnimatePresence>
+        {showFeedback && (
+          <ActivityFeedbackSheet
+            activity="journaling"
+            activityTitle="Thought Bank reflection"
+            durationLabel="Entry saved"
+            onSave={() => navigate('/home/karma-reward')}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

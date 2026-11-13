@@ -44,7 +44,10 @@ export default function SessionsScreen() {
       </button>
 
       {/* Session Notes Card */}
-      <button className="w-full bg-white/60 backdrop-blur-sm rounded-3xl p-5 mb-6 shadow-sm flex items-center justify-between">
+      <button
+        onClick={() => navigate('/home/sessions/league/first-time')}
+        className="w-full bg-white/60 backdrop-blur-sm rounded-3xl p-5 mb-6 shadow-sm flex items-center justify-between"
+      >
         <div className="text-left">
           <h3 className="text-[20px] font-bold text-gray-900 mb-1">Session notes</h3>
           <p className="text-[14px] text-gray-600">Take a pause and reflect</p>

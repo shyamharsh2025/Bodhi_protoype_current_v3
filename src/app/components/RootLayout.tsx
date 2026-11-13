@@ -58,7 +58,12 @@ export default function RootLayout() {
     !location.pathname.includes('/breathwork-prep') &&
     !location.pathname.includes('/meditation-prep') &&
     !location.pathname.includes('/focus-complete') &&
-    !location.pathname.includes('/dopa-meter');
+    !location.pathname.includes('/karma-reward') &&
+    !location.pathname.includes('/dopa-meter') &&
+    location.pathname !== '/home/sessions/league' &&
+    location.pathname !== '/home/sessions/league/first-time' &&
+    !location.pathname.includes('/profile') &&
+    !location.pathname.includes('/subscription');
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
     swipeStartRef.current = {

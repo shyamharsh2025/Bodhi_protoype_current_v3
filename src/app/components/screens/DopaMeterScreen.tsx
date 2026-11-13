@@ -1352,7 +1352,11 @@ function InnerPulseWave({
         const layerFrequency = frequency + (index - 2.5) * 0.09;
         const thickness = 21 + (5 - index) * 1.7;
         const phases = [index * 0.44, index * 0.44 + 0.68, index * 0.44 + 1.36];
-        const trailOffsets = [0.16 + tension * 0.08, 0.34 + tension * 0.12];
+        const trailOffsets = [
+          0.12 + tension * 0.05,
+          0.28 + tension * 0.08,
+          0.48 + tension * 0.12,
+        ];
         return {
           paths: phases.map((phaseShift) => buildPulseRibbon(640, base, layerAmplitude, layerFrequency, phaseShift, thickness, layerSeed)),
           lines: phases.map((phaseShift) => buildPulseLine(640, base - thickness * 0.2, layerAmplitude, layerFrequency, phaseShift, layerSeed)),
@@ -1360,11 +1364,11 @@ function InnerPulseWave({
             phases.map((phaseShift) =>
               buildPulseRibbon(
                 640,
-                base + 3 + trailIndex * 3.5,
-                layerAmplitude * (1 - trailIndex * 0.04),
+                base + 2 + trailIndex * 3.25,
+                layerAmplitude * (1 - trailIndex * 0.035),
                 layerFrequency,
                 phaseShift - trailOffset,
-                thickness * (1.18 + trailIndex * 0.24),
+                thickness * (1.08 + trailIndex * 0.3),
                 layerSeed + trailIndex * 0.1,
               ),
             ),
@@ -1375,7 +1379,7 @@ function InnerPulseWave({
     [amplitude, frequency, tension],
   );
 
-  const trailOpacity = 0.13 + tension * 0.09;
+  const trailOpacity = 0.17 + tension * 0.1;
 
   return (
     <div
@@ -1421,11 +1425,19 @@ function InnerPulseWave({
             <stop offset="1" stopColor="#E4F7FF" stopOpacity=".76" />
           </linearGradient>
           <filter id={`pulse-glow-${id}`} x="-30%" y="-70%" width="160%" height="240%">
-            <feGaussianBlur stdDeviation="2.2" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5.2" result="wideGlow" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.45" result="closeGlow" />
+            <feMerge>
+              <feMergeNode in="wideGlow" />
+              <feMergeNode in="closeGlow" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
           </filter>
-          <filter id={`pulse-trail-${id}`} x="-35%" y="-85%" width="170%" height="270%">
-            <feGaussianBlur stdDeviation="5.6" />
+          <filter id={`pulse-trail-soft-${id}`} x="-35%" y="-85%" width="170%" height="270%">
+            <feGaussianBlur stdDeviation="2.8" />
+          </filter>
+          <filter id={`pulse-trail-diffuse-${id}`} x="-40%" y="-95%" width="180%" height="290%">
+            <feGaussianBlur stdDeviation="7.4" />
           </filter>
         </defs>
         {ribbons.map((ribbon, index) =>
@@ -1436,14 +1448,20 @@ function InnerPulseWave({
                   d={trail[0]}
                   animate={reduceMotion ? undefined : { d: [...trail, trail[0]] }}
                   transition={{
-                    duration: speed + index * 0.46 + trailIndex * 0.38,
+                    duration: speed + index * 0.46 + trailIndex * 0.84,
                     repeat: Infinity,
                     ease: 'easeInOut',
-                    delay: -(trailIndex + 1) * 0.32,
+                    delay: -[0.18, 0.44, 0.78][trailIndex],
                   }}
                   fill={`url(#pulse-${id})`}
-                  opacity={trailOpacity * (1 - trailIndex * 0.38)}
-                  filter={trailIndex === 1 ? `url(#pulse-trail-${id})` : undefined}
+                  opacity={trailOpacity * [1, 0.62, 0.34][trailIndex]}
+                  filter={
+                    trailIndex === 1
+                      ? `url(#pulse-trail-soft-${id})`
+                      : trailIndex === 2
+                        ? `url(#pulse-trail-diffuse-${id})`
+                        : undefined
+                  }
                 />
               ))
             : null,
@@ -1464,8 +1482,8 @@ function InnerPulseWave({
               fill="none"
               stroke={`url(#pulse-shine-${id})`}
               strokeLinecap="round"
-              strokeWidth={index % 3 === 0 ? 1.65 : 0.9}
-              opacity={0.5 + index * 0.055}
+              strokeWidth={index % 3 === 0 ? 2.05 : 1.15}
+              opacity={Math.min(0.92, 0.68 + index * 0.045)}
               filter={`url(#pulse-glow-${id})`}
             />
           </g>

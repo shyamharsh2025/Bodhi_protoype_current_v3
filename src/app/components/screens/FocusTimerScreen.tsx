@@ -22,8 +22,18 @@ export default function FocusTimerScreen() {
 
   useEffect(() => {
     if (elapsed > total) setElapsed(total);
-    if (elapsed >= total && total > 0) navigate('/home/focus-complete');
-  }, [total, elapsed, navigate]);
+    if (elapsed >= total && total > 0) {
+      sessionStorage.setItem(
+        'bodhi-active-focus-session',
+        JSON.stringify({
+          title: 'Math Assignment – Chapter 3',
+          durationLabel: `${sessionMinutes} min`,
+          completedAt: new Date().toISOString(),
+        }),
+      );
+      navigate('/home/focus-complete');
+    }
+  }, [total, elapsed, navigate, sessionMinutes]);
 
   const minutes = String(Math.floor(remaining / 60)).padStart(2, '0');
   const seconds = String(remaining % 60).padStart(2, '0');
@@ -154,7 +164,17 @@ export default function FocusTimerScreen() {
           </span>
         </button>
         <button
-          onClick={() => navigate('/home/focus-complete')}
+          onClick={() => {
+            sessionStorage.setItem(
+              'bodhi-active-focus-session',
+              JSON.stringify({
+                title: 'Math Assignment – Chapter 3',
+                durationLabel: `${sessionMinutes} min`,
+                completedAt: new Date().toISOString(),
+              }),
+            );
+            navigate('/home/focus-complete');
+          }}
           className="h-[52px] rounded-full flex items-center justify-center gap-3 active:scale-[0.98] transition-transform"
           style={{
             background: 'rgba(255, 90, 100, 0.08)',

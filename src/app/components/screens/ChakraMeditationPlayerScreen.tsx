@@ -10,9 +10,11 @@ import {
   SkipForward,
   Volume2,
 } from 'lucide-react';
+import { AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import rootChakraImage from '../../../imports/ReturnUserHome/680b9473c856efcb97e710b14b817e94ed6c94f3.png';
+import ActivityFeedbackSheet from '../ActivityFeedbackSheet';
 
 const chakraTitles: Record<string, string> = {
   root: 'Ground Chakra Meditation',
@@ -130,6 +132,8 @@ export default function ChakraMeditationPlayerScreen() {
   const navigate = useNavigate();
   const { chakra, focus, emotional, awareness, regulation } = useParams();
   const [isPlaying, setIsPlaying] = useState(true);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const isCompleted = showFeedback;
   const isFocusMeditation = Boolean(focus);
   const isEmotionalMeditation = Boolean(emotional);
   const isAwarenessMeditation = Boolean(awareness);
@@ -203,7 +207,7 @@ export default function ChakraMeditationPlayerScreen() {
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
                 <p className="text-[12px] font-extrabold uppercase leading-4 tracking-[0.08em] text-[#8171F2]">
-                  Now Playing
+                  {isCompleted ? 'Completed ✨' : 'Now Playing'}
                 </p>
                 <h2 className="mt-1 text-[25px] font-extrabold leading-8 tracking-normal text-[#2D2E34]">
                   {title}
@@ -223,12 +227,12 @@ export default function ChakraMeditationPlayerScreen() {
             <div className="mt-5">
               <div className="relative h-5">
                 <div className="absolute left-0 right-0 top-2 h-1.5 rounded-full bg-white/70 shadow-[inset_0px_1px_0px_rgba(255,255,255,0.7)]" />
-                <div className="absolute left-0 top-2 h-1.5 w-[39%] rounded-full bg-[linear-gradient(90deg,#8171F2_0%,#5840D4_100%)] shadow-[0px_0px_12px_rgba(129,113,242,0.34)]" />
-                <div className="absolute left-[39%] top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-white bg-[#5840D4] shadow-[0px_6px_14px_rgba(84,75,187,0.32)]" />
+                <div className={`absolute left-0 top-2 h-1.5 rounded-full bg-[linear-gradient(90deg,#8171F2_0%,#5840D4_100%)] shadow-[0px_0px_12px_rgba(129,113,242,0.34)] transition-[width] duration-300 ${isCompleted ? 'w-full' : 'w-[39%]'}`} />
+                <div className={`absolute top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-white bg-[#5840D4] shadow-[0px_6px_14px_rgba(84,75,187,0.32)] transition-[left] duration-300 ${isCompleted ? 'left-full' : 'left-[39%]'}`} />
               </div>
               <div className="mt-1 flex items-center justify-between text-[13px] font-semibold leading-5 text-[#6B6B86]">
-                <span>6:17</span>
-                <span>17:00</span>
+                <span>{isCompleted ? duration.replace(' min', ':00') : '6:17'}</span>
+                <span>{isCompleted ? duration.replace(' min', ':00') : '17:00'}</span>
               </div>
             </div>
 
@@ -252,6 +256,10 @@ export default function ChakraMeditationPlayerScreen() {
               </button>
               <button
                 aria-label="Next"
+                onClick={() => {
+                  setIsPlaying(false);
+                  setShowFeedback(true);
+                }}
                 className="flex h-16 w-16 items-center justify-center rounded-full text-[#5840D4] active:scale-[0.96]"
               >
                 <SkipForward className="h-10 w-10" strokeWidth={2.1} />
@@ -274,6 +282,16 @@ export default function ChakraMeditationPlayerScreen() {
           </section>
         </main>
       </div>
+      <AnimatePresence>
+        {showFeedback && (
+          <ActivityFeedbackSheet
+            activity="meditation"
+            activityTitle={title}
+            durationLabel={duration}
+            onSave={() => navigate('/home/karma-reward')}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

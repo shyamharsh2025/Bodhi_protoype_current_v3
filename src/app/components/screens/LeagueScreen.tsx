@@ -7,24 +7,29 @@ import {
   Flame,
   Hourglass,
   PencilLine,
+  Send,
   Sparkles,
   UserRound,
+  UserPlus,
   UsersRound,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import meditationHeroImage from '../../../imports/ReturnUserHome/33c81ac0148d41512ccbf9408cc3b4f4bde8048d.png';
 
-const filters = ['All Members (30)', 'Completed (18)', 'Yet to Show Up (12)'];
+const assignedFilters = ['All Members (30)', 'Completed (18)', 'Yet to Show Up (12)'];
+const previousAssignmentFilters = ['All Members (30)', 'Completed (18)', 'Missed (12)'];
+const freshAssignmentFilters = ['All Members (30)', 'Completed (0)', 'Yet to Show Up (30)'];
+const firstTimeFilters = ['All Members (30)', 'Completed (0)', 'Not assigned (30)'];
 
 const students = [
-  { name: 'Kabir Patel', status: 'Completed today', streak: 17, karma: 125, complete: true, tone: 'violet' },
-  { name: 'Riya Shah', status: 'Completed today', streak: 12, karma: 110, complete: true, tone: 'rose' },
-  { name: 'Aarav Mehta', status: 'Yet to show up', streak: 4, karma: 85, complete: false, tone: 'blue' },
-  { name: 'Meera Joshi', status: 'Yet to show up', streak: 3, karma: 70, complete: false, tone: 'amber' },
+  { name: 'Kabir Patel', status: 'Completed today', previousStatus: 'Completed last practice', streak: 17, karma: 125, complete: true, tone: 'violet' },
+  { name: 'Riya Shah', status: 'Completed today', previousStatus: 'Completed last practice', streak: 12, karma: 110, complete: true, tone: 'rose' },
+  { name: 'Aarav Mehta', status: 'Yet to show up', previousStatus: 'Missed last practice', streak: 4, karma: 85, complete: false, tone: 'blue' },
+  { name: 'Meera Joshi', status: 'Yet to show up', previousStatus: 'Missed last practice', streak: 3, karma: 70, complete: false, tone: 'amber' },
 ];
 
-const heroMetrics = [
+const assignedHeroMetrics = [
   {
     icon: <UsersRound className="h-4 w-4 text-[#5840D4]" strokeWidth={2.4} />,
     iconClassName: 'bg-[linear-gradient(135deg,#F6F3FF_0%,#DDD8FF_100%)]',
@@ -51,27 +56,59 @@ const heroMetrics = [
   },
 ];
 
-export default function LeagueScreen() {
+const previousAssignmentMetrics = assignedHeroMetrics.map((metric) =>
+  metric.label === 'Pending' ? { ...metric, label: 'Missed' } : metric,
+);
+
+const freshAssignmentMetrics = assignedHeroMetrics.map((metric) => {
+  if (metric.label === 'Completed') return { ...metric, value: '0' };
+  if (metric.label === 'Pending') return { ...metric, value: '30' };
+  return metric;
+});
+
+const firstTimeMetrics = assignedHeroMetrics.map((metric) => ({
+  ...metric,
+  value: metric.label === 'Students' ? '30' : '—',
+}));
+
+const recommendedMeditation = {
+  title: '5-Min Calm Reset',
+  description: 'A short reset to pause, breathe, and return with more clarity.',
+};
+
+type LeagueScreenProps = {
+  variant?: 'with-history' | 'first-time';
+};
+
+export default function LeagueScreen({ variant = 'with-history' }: LeagueScreenProps) {
   const navigate = useNavigate();
-  const [classMeditation, setClassMeditation] = useState({
-    title: '5-Min Calm Reset',
-    description: 'A short reset to pause, breathe, and return with more clarity.',
-  });
+  const [classMeditation, setClassMeditation] = useState(recommendedMeditation);
+  const [hasClassAssignment, setHasClassAssignment] = useState(false);
+  const [isFreshAssignment, setIsFreshAssignment] = useState(false);
+  const isFirstTimeEmpty = variant === 'first-time' && !hasClassAssignment;
 
-  useEffect(() => {
-    const savedMeditation = window.localStorage.getItem('bodhiClassMeditation');
-    if (!savedMeditation) return;
+  const assignRecommendedMeditation = () => {
+    window.localStorage.setItem('bodhiClassMeditation', JSON.stringify(recommendedMeditation));
+    setClassMeditation(recommendedMeditation);
+    setHasClassAssignment(true);
+    setIsFreshAssignment(true);
+    navigator.vibrate?.([12, 24, 12]);
+  };
 
-    try {
-      const parsed = JSON.parse(savedMeditation) as Partial<typeof classMeditation>;
-      setClassMeditation((current) => ({
-        title: parsed.title || current.title,
-        description: parsed.description || current.description,
-      }));
-    } catch {
-      // Ignore malformed prototype state and keep the default class meditation.
-    }
-  }, []);
+  const visibleFilters = isFirstTimeEmpty
+    ? firstTimeFilters
+    : !hasClassAssignment
+      ? previousAssignmentFilters
+    : isFreshAssignment
+      ? freshAssignmentFilters
+      : assignedFilters;
+  const visibleMetrics = isFirstTimeEmpty
+    ? firstTimeMetrics
+    : !hasClassAssignment
+      ? previousAssignmentMetrics
+    : isFreshAssignment
+      ? freshAssignmentMetrics
+      : assignedHeroMetrics;
 
   return (
     <div className="relative mx-auto min-h-screen w-full max-w-md pb-6">
@@ -121,66 +158,106 @@ export default function LeagueScreen() {
               <div className="inline-flex h-8 items-center gap-2 rounded-full border border-white/24 bg-white/18 px-4 shadow-[inset_0px_1px_0px_rgba(255,255,255,0.30)] backdrop-blur-xl">
                 <UsersRound className="h-4 w-4" strokeWidth={2.3} />
                 <span className="text-[11px] font-extrabold uppercase leading-4 text-white/95">
-                  Today&apos;s Class Status
+                  {hasClassAssignment || isFirstTimeEmpty ? 'Today\'s Class Status' : 'Previous Assignment Status'}
                 </span>
               </div>
 
               <div className="relative mt-4 min-h-[92px]">
                 <div className="absolute right-[-2px] top-[-12px]">
-                  <ProgressRing />
+                  <ProgressRing completed={isFreshAssignment ? 0 : 18} unassigned={isFirstTimeEmpty} />
                 </div>
                 <div className="min-w-0 pr-[104px]">
                   <h2 className="max-w-[250px] text-[17px] font-extrabold leading-[22px] tracking-normal text-white">
-                    18 of 30 students completed today&apos;s meditation.
+                    {isFirstTimeEmpty
+                      ? 'Your class dashboard will appear here.'
+                      : !hasClassAssignment
+                      ? '18 of 30 students completed your last assigned meditation.'
+                      : isFreshAssignment
+                        ? 'Today\'s meditation is assigned and ready for Grade 8A.'
+                        : '18 of 30 students completed today\'s meditation.'}
                   </h2>
                   <p className="mt-2.5 max-w-[240px] text-[13px] font-semibold leading-[18px] text-white/86">
-                    60% of Grade 8A completed today
+                    {isFirstTimeEmpty
+                      ? 'Assign a meditation to begin today\'s class practice and see participation as it happens.'
+                      : !hasClassAssignment
+                      ? 'Showing results from the previous class assignment'
+                      : isFreshAssignment
+                        ? 'Students can now begin today\'s practice'
+                        : '60% of Grade 8A completed today'}
                   </p>
                 </div>
               </div>
 
-              <HeroStatStrip />
+              <HeroStatStrip metrics={visibleMetrics} />
             </div>
           </div>
         </section>
 
-        <section className="relative min-h-[204px] rounded-[24px] border border-white/82 bg-white/90 p-4 shadow-[0px_16px_36px_rgba(84,75,187,0.13)] backdrop-blur-xl">
-          <div className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-[rgba(18,130,99,0.10)] px-2.5 py-1 text-[10px] font-bold leading-3 text-[#126C55]">
-            <CheckCircle2 className="h-3 w-3" strokeWidth={2.4} />
-            Assigned
+        <section className={`relative rounded-[24px] border border-white/82 bg-white/90 p-4 shadow-[0px_16px_36px_rgba(84,75,187,0.13)] backdrop-blur-xl ${hasClassAssignment ? 'min-h-[222px]' : 'min-h-[292px]'}`}>
+          <div className="flex min-h-[24px] items-center justify-between gap-3">
+            <p className="min-w-0 flex-1 truncate text-[9px] font-extrabold uppercase leading-4 tracking-[0.12px] text-[#6D5BFF] min-[400px]:text-[9.5px]">
+              {hasClassAssignment ? 'Today\'s Class Meditation' : 'Today\'s Recommended Practice'}
+            </p>
+            {hasClassAssignment ? (
+              <div className="inline-flex shrink-0 items-center gap-1 rounded-full bg-[rgba(18,130,99,0.10)] px-2.5 py-1 text-[10px] font-bold leading-3 text-[#126C55]">
+                <CheckCircle2 className="h-3 w-3" strokeWidth={2.4} />
+                Assigned
+              </div>
+            ) : (
+              <div className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-white/90 bg-[linear-gradient(135deg,#F1EAFE_0%,#E7E4FF_100%)] px-2.5 py-1 text-[10px] font-extrabold leading-3 text-[#6544DC] shadow-[0_6px_16px_rgba(84,75,187,.09),inset_0_1px_0_white]">
+                <Sparkles className="h-3 w-3" strokeWidth={2.4} />
+                Recommended
+              </div>
+            )}
           </div>
 
-          <div className="grid grid-cols-[70px_minmax(0,1fr)] gap-3.5">
-            <div className="flex h-[70px] w-[70px] shrink-0 items-center justify-center rounded-full bg-white shadow-[0px_12px_26px_rgba(84,75,187,0.12)]">
-              <div className="h-[58px] w-[58px] overflow-hidden rounded-full bg-[#EEF2FA]">
-              <img src={meditationHeroImage} alt="Meditation artwork" className="h-full w-full object-cover" />
+          <div className="mt-3.5 grid grid-cols-[72px_minmax(0,1fr)] items-center gap-3.5">
+            <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full bg-white shadow-[0px_12px_26px_rgba(84,75,187,0.12)]">
+              <div className="h-[60px] w-[60px] overflow-hidden rounded-full bg-[#EEF2FA]">
+                <img src={meditationHeroImage} alt="Meditation artwork" className="h-full w-full object-cover" />
               </div>
             </div>
 
-            <div className="min-w-0 flex-1 pt-0.5">
-              <p className="max-w-[172px] whitespace-nowrap text-[10px] font-extrabold uppercase leading-4 text-[#6D5BFF]">
-                Today&apos;s Class Meditation
-              </p>
-              <h2 className="mt-1 max-w-[158px] text-[19px] font-extrabold leading-[23px] tracking-normal text-[#101221]">
+            <div className="min-w-0">
+              <h2 className="truncate text-[20px] font-extrabold leading-6 tracking-[-0.25px] text-[#101221]">
                 {classMeditation.title}
               </h2>
-              <p className="mt-1.5 text-[13.5px] font-semibold leading-[18px] text-[#5A5B62]">
-                Ready for today&apos;s class practice
+              <p className="mt-2 text-[13px] font-semibold leading-[18px] text-[#5A5B62]">
+                {hasClassAssignment
+                  ? 'Ready for today\'s class practice'
+                  : isFirstTimeEmpty
+                    ? 'Recommended for today\'s class'
+                    : 'Suggested for today\'s class'}
               </p>
             </div>
           </div>
 
-          <div className="mt-9 grid grid-cols-[1.03fr_0.97fr] gap-3">
+          {!hasClassAssignment && (
+            <button
+              type="button"
+              onClick={assignRecommendedMeditation}
+              className="mt-7 flex min-h-[50px] w-full items-center justify-center gap-2 rounded-full border border-white/35 bg-[linear-gradient(105deg,#7045EF_0%,#5840D4_52%,#3989F4_112%)] px-5 text-[14px] font-extrabold text-white shadow-[0_14px_28px_rgba(84,64,212,.27),0_0_24px_rgba(91,119,245,.15),inset_0_1px_0_rgba(255,255,255,.28)] transition active:scale-[.985] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#6754E8]/25"
+            >
+              {isFirstTimeEmpty ? (
+                <Send className="h-[18px] w-[18px]" strokeWidth={2.4} />
+              ) : (
+                <UserPlus className="h-[18px] w-[18px]" strokeWidth={2.4} />
+              )}
+              Assign Meditation
+            </button>
+          )}
+
+          <div className={`${hasClassAssignment ? 'mt-9 grid-cols-[1.03fr_0.97fr] gap-3' : 'mt-4 grid-cols-2 gap-2'} grid`}>
             <button
               onClick={() => navigate('/home/explore?assign=class')}
-              className="flex min-h-[46px] items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[linear-gradient(135deg,#7457FF_0%,#5840D4_52%,#4F7CF7_100%)] px-3 text-center text-[12.5px] font-extrabold leading-4 text-white shadow-[0px_12px_24px_rgba(84,75,187,0.24),inset_0px_1px_0px_rgba(255,255,255,0.22)] active:scale-[0.98]"
+              className={`flex min-h-[46px] min-w-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full text-center font-extrabold leading-4 active:scale-[0.98] ${hasClassAssignment ? 'bg-[linear-gradient(135deg,#7457FF_0%,#5840D4_52%,#4F7CF7_100%)] px-3 text-[12.5px] text-white shadow-[0px_12px_24px_rgba(84,75,187,0.24),inset_0px_1px_0px_rgba(255,255,255,0.22)]' : 'border border-[#7255E9] bg-white/76 px-1.5 text-[10.5px] text-[#5840D4] shadow-[0_9px_20px_rgba(84,75,187,.09),inset_0_1px_0_white]'}`}
             >
               <PencilLine className="h-4 w-4 shrink-0" strokeWidth={2.3} />
-              <span>Change Meditation</span>
+              <span>{isFirstTimeEmpty ? 'Choose Another' : 'Change Meditation'}</span>
             </button>
             <button
               onClick={() => navigate('/home/sessions/assign-individually')}
-              className="flex min-h-[46px] items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#E0DCF4] bg-[linear-gradient(135deg,#FFFFFF_0%,#F5F1FF_100%)] px-3 text-center text-[12.5px] font-extrabold leading-4 text-[#5840D4] shadow-[0px_10px_20px_rgba(84,75,187,0.09),inset_0px_1px_0px_rgba(255,255,255,0.9)] active:scale-[0.98]"
+              className={`flex min-h-[46px] min-w-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-[#E0DCF4] bg-[linear-gradient(135deg,#FFFFFF_0%,#F5F1FF_100%)] text-center font-extrabold leading-4 text-[#5840D4] shadow-[0px_10px_20px_rgba(84,75,187,0.09),inset_0px_1px_0px_rgba(255,255,255,0.9)] active:scale-[0.98] ${hasClassAssignment ? 'px-3 text-[12.5px]' : 'px-1.5 text-[10.5px]'}`}
             >
               <UsersRound className="h-4 w-4 shrink-0" strokeWidth={2.3} />
               <span>Assign Individually</span>
@@ -189,13 +266,25 @@ export default function LeagueScreen() {
         </section>
 
         <section className="pb-4">
-          <h2 className="px-1 text-[22px] font-extrabold leading-8 tracking-normal text-[#101221]">
-            Students
-          </h2>
+          <div className="flex items-center justify-between gap-3 px-1">
+            <h2 className="text-[22px] font-extrabold leading-8 tracking-normal text-[#101221]">
+              Students
+            </h2>
+            <button
+              onClick={() => navigate('/home/sessions/league/join-requests')}
+              className="relative flex min-h-11 items-center gap-2 rounded-full border border-[#D8D2F1] bg-white/82 py-2 pl-3 pr-2.5 text-[12px] font-extrabold text-[#5840D4] shadow-[0_8px_20px_rgba(84,75,187,0.10)] backdrop-blur-xl transition active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5840D4]"
+            >
+              <UserPlus className="h-4 w-4" strokeWidth={2.4} />
+              <span>Join Requests</span>
+              <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-[#5840D4] px-1.5 text-[10px] font-extrabold text-white shadow-[0_4px_10px_rgba(84,75,187,0.24)]">
+                3
+              </span>
+            </button>
+          </div>
 
           <div className="-mx-5 mt-3 overflow-x-auto px-5 pb-1 scrollbar-hide">
             <div className="flex min-w-max gap-2">
-              {filters.map((filter, index) => (
+              {visibleFilters.map((filter, index) => (
                 <button
                   key={filter}
                   className={`h-10 rounded-full border px-5 text-[13px] font-bold leading-5 active:scale-[0.98] ${
@@ -211,28 +300,39 @@ export default function LeagueScreen() {
           </div>
 
           <div className="mt-4 space-y-3">
-            {students.map((student) => (
-              <button
-                key={student.name}
-                onClick={() => navigate('/home/sessions/member-profile')}
-                className="flex w-full items-center gap-3 rounded-[22px] border border-white/84 bg-white/84 p-3 text-left shadow-[0px_10px_24px_rgba(84,75,187,0.10)] backdrop-blur-xl active:scale-[0.99]"
-              >
-                <StudentAvatar name={student.name} tone={student.tone} complete={student.complete} />
+            {students.map((student) => {
+              const completed = !isFreshAssignment && student.complete;
+              const avatarActive = isFirstTimeEmpty ? student.complete : completed;
+              const status = !hasClassAssignment
+                ? student.previousStatus
+                : isFreshAssignment
+                  ? 'Yet to show up'
+                  : student.status;
+
+              return (
+                <button
+                  key={student.name}
+                  onClick={() => navigate('/home/sessions/member-profile')}
+                  className="flex w-full items-center gap-3 rounded-[22px] border border-white/84 bg-white/84 p-3 text-left shadow-[0px_10px_24px_rgba(84,75,187,0.10)] backdrop-blur-xl active:scale-[0.99]"
+                >
+                <StudentAvatar name={student.name} tone={student.tone} complete={avatarActive} />
                 <div className="min-w-0 flex-1">
                   <div className="flex min-w-0 items-center justify-between gap-2">
                     <div className="min-w-0">
                       <h3 className="truncate text-[15px] font-extrabold leading-5 text-[#101221]">
                         {student.name}
                       </h3>
-                      <span
-                        className={`mt-1 inline-flex rounded-full px-2.5 py-1 text-[11px] font-bold leading-3 ${
-                          student.complete
-                            ? 'bg-[rgba(35,176,109,0.13)] text-[#128263]'
-                            : 'bg-[rgba(255,207,138,0.24)] text-[#D85319]'
-                        }`}
-                      >
-                        {student.status}
-                      </span>
+                      {!isFirstTimeEmpty && (
+                        <span
+                          className={`mt-1 inline-flex rounded-full px-2.5 py-1 text-[11px] font-bold leading-3 ${
+                            completed
+                              ? 'bg-[rgba(35,176,109,0.13)] text-[#128263]'
+                              : 'bg-[rgba(255,207,138,0.24)] text-[#D85319]'
+                          }`}
+                        >
+                          {status}
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -249,8 +349,9 @@ export default function LeagueScreen() {
                   </div>
                 </div>
                 <ChevronRight className="h-5 w-5 shrink-0 text-[#5A5B62]/55" strokeWidth={2.2} />
-              </button>
-            ))}
+                </button>
+              );
+            })}
           </div>
         </section>
       </main>
@@ -258,9 +359,11 @@ export default function LeagueScreen() {
   );
 }
 
-function ProgressRing() {
+function ProgressRing({ completed, unassigned = false }: { completed: number; unassigned?: boolean }) {
   const radius = 39;
   const circumference = 2 * Math.PI * radius;
+  const total = 30;
+  const completionRatio = completed / total;
 
   return (
     <div className="relative flex h-[108px] w-[108px] items-center justify-center">
@@ -278,42 +381,54 @@ function ProgressRing() {
           </filter>
         </defs>
         <circle cx="50" cy="50" r={radius} fill="none" stroke="rgba(255,255,255,0.30)" strokeWidth="12" />
-        <circle
-          cx="50"
-          cy="50"
-          r={radius}
-          fill="none"
-          stroke="rgba(255,255,255,0.82)"
-          strokeWidth="13"
-          strokeLinecap="round"
-          strokeDasharray={circumference}
-          strokeDashoffset={circumference * 0.4}
-          filter="url(#leagueRingGlow)"
-        />
-        <circle
-          cx="50"
-          cy="50"
-          r={radius}
-          fill="none"
-          stroke="url(#leagueRingGradient)"
-          strokeWidth="12"
-          strokeLinecap="round"
-          strokeDasharray={circumference}
-          strokeDashoffset={circumference * 0.4}
-        />
+        {!unassigned && (
+          <>
+            <circle
+              cx="50"
+              cy="50"
+              r={radius}
+              fill="none"
+              stroke="rgba(255,255,255,0.82)"
+              strokeWidth="13"
+              strokeLinecap="round"
+              strokeDasharray={circumference}
+              strokeDashoffset={circumference * (1 - completionRatio)}
+              filter="url(#leagueRingGlow)"
+            />
+            <circle
+              cx="50"
+              cy="50"
+              r={radius}
+              fill="none"
+              stroke="url(#leagueRingGradient)"
+              strokeWidth="12"
+              strokeLinecap="round"
+              strokeDasharray={circumference}
+              strokeDashoffset={circumference * (1 - completionRatio)}
+            />
+          </>
+        )}
       </svg>
       <div className="text-center">
-        <div className="text-[16.5px] font-extrabold leading-5 text-white">18/30</div>
-        <div className="text-[8px] font-bold leading-3 text-white/92">Completed</div>
+        {unassigned ? (
+          <div className="text-[12px] font-extrabold leading-[15px] text-white">
+            Not<br />Assigned
+          </div>
+        ) : (
+          <>
+            <div className="text-[16.5px] font-extrabold leading-5 text-white">{completed}/{total}</div>
+            <div className="text-[8px] font-bold leading-3 text-white/92">Completed</div>
+          </>
+        )}
       </div>
     </div>
   );
 }
 
-function HeroStatStrip() {
+function HeroStatStrip({ metrics }: { metrics: typeof assignedHeroMetrics }) {
   return (
     <div className="relative mt-3 flex h-[78px] items-stretch overflow-hidden rounded-[17px]">
-        {heroMetrics.map((metric, index) => (
+        {metrics.map((metric, index) => (
           <div
             key={metric.label}
             className={`relative flex h-full w-[calc((100%+30px)/4)] shrink-0 flex-col items-center justify-center px-1.5 text-center backdrop-blur-xl ${

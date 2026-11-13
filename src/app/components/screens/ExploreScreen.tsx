@@ -1,7 +1,9 @@
 import { Bell, Search, SlidersHorizontal, Plus, Target, BookOpen, Bookmark, Play, Eye, Heart, ShieldCheck } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
+import { useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
+import PersonalLibraryCard from '../PersonalLibraryCard';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 14 },
@@ -13,7 +15,9 @@ const tapTransition = { type: 'spring', stiffness: 520, damping: 34 };
 export default function ExploreScreen() {
   const navigate = useNavigate();
   const shouldReduceMotion = useReducedMotion();
+  const stackCarouselRef = useRef<HTMLDivElement>(null);
   const [searchParams] = useSearchParams();
+  const [stackSlide, setStackSlide] = useState(0);
   const assignmentTarget = searchParams.get('assign');
   const selectedCount = Number(searchParams.get('count') || '0');
   const resolvedSelectedCount = selectedCount > 0 ? selectedCount : 1;
@@ -35,6 +39,28 @@ export default function ExploreScreen() {
   const openEmotionalPlaylist = () => navigate('/home/emotional-wellbeing');
   const openAwarenessPlaylist = () => navigate('/home/awareness-observation');
   const openRegulationPlaylist = () => navigate('/home/regulation-control');
+
+  const updateStackSlide = () => {
+    const carousel = stackCarouselRef.current;
+    if (!carousel) return;
+    const cards = Array.from(carousel.children) as HTMLElement[];
+    const closest = cards.reduce(
+      (best, card, index) => {
+        const distance = Math.abs(card.offsetLeft - carousel.offsetLeft - carousel.scrollLeft);
+        return distance < best.distance ? { index, distance } : best;
+      },
+      { index: 0, distance: Number.POSITIVE_INFINITY },
+    );
+    setStackSlide(closest.index);
+  };
+
+  const goToStackSlide = (index: number) => {
+    const carousel = stackCarouselRef.current;
+    const card = carousel?.children[index] as HTMLElement | undefined;
+    if (!carousel || !card) return;
+    carousel.scrollTo({ left: card.offsetLeft - carousel.offsetLeft, behavior: 'smooth' });
+    setStackSlide(index);
+  };
 
   const categories = [
     {
@@ -138,7 +164,7 @@ export default function ExploreScreen() {
 
         {!isAssignmentMode && (
           <motion.div variants={sectionVariants} transition={{ duration: 0.28, ease: 'easeOut' }} className="grid grid-cols-4 gap-3 mb-8">
-            <CircleAction label="Your Stack" onClick={() => navigate('/home/sessions')}>
+            <CircleAction label="Your Stack" onClick={() => navigate('/home/explore/your-stack')}>
               <Plus className="w-7 h-7" style={{ color: '#5B4FDB' }} strokeWidth={2.5} />
             </CircleAction>
             <CircleAction label="Meditation" onClick={openPlaylist}>
@@ -244,58 +270,107 @@ export default function ExploreScreen() {
           ))}
         </motion.div>
 
-        {/* Chakra Reset Series list */}
-        <motion.div variants={sectionVariants} transition={{ duration: 0.28, ease: 'easeOut' }}>
-          <SectionHeader title="Chakra Reset Series" action="VIEW ALL" onAction={openPlaylist} />
-        </motion.div>
+        {isAssignmentMode ? (
+          <>
+            <motion.div variants={sectionVariants} transition={{ duration: 0.28, ease: 'easeOut' }}>
+              <SectionHeader title="Chakra Reset Series" action="VIEW ALL" onAction={openPlaylist} />
+            </motion.div>
 
-        <motion.div variants={sectionVariants} transition={{ duration: 0.28, ease: 'easeOut' }} className="flex flex-col gap-3">
-          {chakras.map((item) => (
-            <motion.button
-              key={item.title}
-              onClick={() => navigate(`${item.path}${assignmentQuery}`)}
-              whileTap={shouldReduceMotion ? undefined : { scale: 0.985, y: 1 }}
-              transition={tapTransition}
-              className="w-full rounded-[22px] p-3.5 flex items-center gap-3 text-left cursor-pointer"
+            <motion.div variants={sectionVariants} transition={{ duration: 0.28, ease: 'easeOut' }} className="flex flex-col gap-3">
+              {chakras.map((item) => (
+                <motion.button
+                  key={item.title}
+                  onClick={() => navigate(`${item.path}${assignmentQuery}`)}
+                  whileTap={shouldReduceMotion ? undefined : { scale: 0.985, y: 1 }}
+                  transition={tapTransition}
+                  className="w-full rounded-[22px] p-3.5 flex items-center gap-3 text-left cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.97) 0%, rgba(248,250,255,0.94) 58%, rgba(240,246,255,0.9) 100%)',
+                    boxShadow: '0 20px 38px rgba(42,48,90,0.13), 0 10px 24px rgba(84,75,187,0.12), inset 0 1px 0 rgba(255,255,255,0.92)',
+                    border: '1.5px solid rgba(198,202,222,0.88)',
+                  }}
+                >
+                  <div
+                    className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 border-2 border-white"
+                    style={{
+                      background: 'linear-gradient(135deg, #F4F1FF 0%, #DAD2FF 100%)',
+                      boxShadow: '0 12px 22px rgba(42,48,90,0.12), 0 8px 16px rgba(84,75,187,0.12)',
+                    }}
+                  >
+                    <LotusIcon small />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p style={{ color: '#2d2e34', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15 }}>
+                      {item.title}
+                    </p>
+                    <p style={{ color: '#9A98B8', fontFamily: 'Inter, sans-serif', fontWeight: 500, fontSize: 12, marginTop: 1 }}>
+                      {item.minutes} min
+                    </p>
+                  </div>
+                  <span className="w-9 h-9 rounded-full flex items-center justify-center" aria-hidden="true">
+                    <Bookmark className="w-5 h-5" style={{ color: '#5B4FDB' }} />
+                  </span>
+                  <span
+                    className="w-11 h-11 rounded-full flex items-center justify-center shrink-0"
+                    style={{
+                      background: 'linear-gradient(135deg, #8171F2 0%, #5B4FDB 58%, #4D86F7 100%)',
+                      boxShadow: '0 14px 24px rgba(42,48,90,0.18), 0 10px 20px rgba(84,75,187,0.28)',
+                    }}
+                    aria-hidden="true"
+                  >
+                    <Play className="w-4 h-4 text-white" fill="white" />
+                  </span>
+                </motion.button>
+              ))}
+            </motion.div>
+          </>
+        ) : (
+          <motion.section
+            id="back-to-your-stack"
+            variants={sectionVariants}
+            transition={{ duration: 0.28, ease: 'easeOut' }}
+            aria-labelledby="back-to-stack-title"
+          >
+            <div className="flex items-center justify-between mb-3.5">
+              <h2 id="back-to-stack-title" style={{ color: '#2d2e34', fontFamily: 'Inter, sans-serif', fontWeight: 850, fontSize: 20, letterSpacing: '-0.25px' }}>
+                Back to Your Stack
+              </h2>
+              <button onClick={() => navigate('/home/explore/your-stack')} className="min-h-9 px-1" style={{ color: '#5B4FDB', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 12, letterSpacing: '0.5px' }}>
+                VIEW STACK
+              </button>
+            </div>
+
+            <div
+              ref={stackCarouselRef}
+              onScroll={updateStackSlide}
+              className="scrollbar-hide -my-20 -mr-5 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain py-20 pr-5 scroll-smooth"
               style={{
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.97) 0%, rgba(248,250,255,0.94) 58%, rgba(240,246,255,0.9) 100%)',
-                boxShadow: '0 20px 38px rgba(42,48,90,0.13), 0 10px 24px rgba(84,75,187,0.12), inset 0 1px 0 rgba(255,255,255,0.92)',
-                border: '1.5px solid rgba(198,202,222,0.88)',
+                WebkitMaskImage:
+                  stackSlide === 0
+                    ? 'linear-gradient(to right, #000 0%, #000 calc(100% - 32px), transparent 100%), linear-gradient(to bottom, transparent 0%, #000 52px, #000 calc(100% - 52px), transparent 100%)'
+                    : 'linear-gradient(to right, transparent 0%, #000 32px, #000 100%), linear-gradient(to bottom, transparent 0%, #000 52px, #000 calc(100% - 52px), transparent 100%)',
+                WebkitMaskComposite: 'source-in',
+                maskImage:
+                  stackSlide === 0
+                    ? 'linear-gradient(to right, #000 0%, #000 calc(100% - 32px), transparent 100%), linear-gradient(to bottom, transparent 0%, #000 52px, #000 calc(100% - 52px), transparent 100%)'
+                    : 'linear-gradient(to right, transparent 0%, #000 32px, #000 100%), linear-gradient(to bottom, transparent 0%, #000 52px, #000 calc(100% - 52px), transparent 100%)',
+                maskComposite: 'intersect',
               }}
+              aria-label="Your Stack carousel"
             >
-              <div
-                className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 border-2 border-white"
-                style={{
-                  background: 'linear-gradient(135deg, #F4F1FF 0%, #DAD2FF 100%)',
-                  boxShadow: '0 12px 22px rgba(42,48,90,0.12), 0 8px 16px rgba(84,75,187,0.12)',
-                }}
-              >
-                <LotusIcon small />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p style={{ color: '#2d2e34', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15 }}>
-                  {item.title}
-                </p>
-                <p style={{ color: '#9A98B8', fontFamily: 'Inter, sans-serif', fontWeight: 500, fontSize: 12, marginTop: 1 }}>
-                  {item.minutes} min
-                </p>
-              </div>
-              <span className="w-9 h-9 rounded-full flex items-center justify-center" aria-hidden="true">
-                <Bookmark className="w-5 h-5" style={{ color: '#5B4FDB' }} />
-              </span>
-              <span
-                className="w-11 h-11 rounded-full flex items-center justify-center shrink-0"
-                style={{
-                  background: 'linear-gradient(135deg, #8171F2 0%, #5B4FDB 58%, #4D86F7 100%)',
-                  boxShadow: '0 14px 24px rgba(42,48,90,0.18), 0 10px 20px rgba(84,75,187,0.28)',
-                }}
-                aria-hidden="true"
-              >
-                <Play className="w-4 h-4 text-white" fill="white" />
-              </span>
-            </motion.button>
-          ))}
-        </motion.div>
+              <PersonalLibraryCard kind="favourites" size="wide" onClick={() => navigate('/home/explore/favourites')} />
+              <PersonalLibraryCard kind="downloads" size="wide" onClick={() => navigate('/home/explore/downloads')} />
+            </div>
+
+            <div className="mt-1 flex h-8 items-center justify-center gap-2" aria-label={`Slide ${stackSlide + 1} of 2`}>
+              {[0, 1].map((index) => (
+                <button key={index} type="button" aria-label={`Go to slide ${index + 1}`} onClick={() => goToStackSlide(index)} className="flex h-8 w-8 items-center justify-center rounded-full">
+                  <span className={`h-2 rounded-full transition-all ${stackSlide === index ? 'w-6 bg-[#5840D4]' : 'w-2 bg-[#CBC7DF]'}`} />
+                </button>
+              ))}
+            </div>
+          </motion.section>
+        )}
       </motion.div>
     </div>
   );
@@ -361,13 +436,15 @@ function CircleAction({ label, onClick, children }: { label: string; onClick: ()
       className="flex flex-col items-center gap-2 cursor-pointer"
     >
       <div
-        className="w-[68px] h-[68px] rounded-full bg-white flex items-center justify-center"
+        className="flex h-[68px] w-[68px] items-center justify-center rounded-full p-1"
         style={{
-          border: '4px solid rgba(116,101,232,0.92)',
-          boxShadow: '0 20px 32px rgba(42,48,90,0.18), 0 12px 24px rgba(84,75,187,0.27), inset 0 2px 0 rgba(255,255,255,0.98)',
+          background: '#7465E8',
+          boxShadow: '0 14px 26px rgba(42,48,90,0.16), 0 6px 14px rgba(84,75,187,0.18)',
         }}
       >
-        {children}
+        <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
+          {children}
+        </div>
       </div>
       <span className="whitespace-nowrap" style={{ color: '#686A73', fontFamily: 'Inter, sans-serif', fontWeight: 750, fontSize: 12 }}>
         {label}

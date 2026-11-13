@@ -16,6 +16,14 @@ import SessionsScreen from './components/screens/SessionsScreen';
 import LeagueScreen from './components/screens/LeagueScreen';
 import AssignIndividuallyScreen from './components/screens/AssignIndividuallyScreen';
 import MemberProfileScreen from './components/screens/MemberProfileScreen';
+import ProfileScreen from './components/screens/ProfileScreen';
+import HelpSupportScreen from './components/screens/HelpSupportScreen';
+import HelpSupportAcknowledgementScreen from './components/screens/HelpSupportAcknowledgementScreen';
+import PreviousRequestsScreen from './components/screens/PreviousRequestsScreen';
+import RequestDetailsScreen from './components/screens/RequestDetailsScreen';
+import SubscriptionScreen from './components/screens/SubscriptionScreen';
+import CouponCodeScreen from './components/screens/CouponCodeScreen';
+import JoinRequestsScreen from './components/screens/JoinRequestsScreen';
 import BroScreen from './components/screens/BroScreen';
 import ExploreScreen from './components/screens/ExploreScreen';
 import ThoughtBankScreen from './components/screens/ThoughtBankScreen';
@@ -24,6 +32,8 @@ import ThoughtBankWriteEntryScreen from './components/screens/ThoughtBankWriteEn
 import JourneyScreen from './components/screens/JourneyScreen';
 import DopaMeterScreen from './components/screens/DopaMeterScreen';
 import NewForYouScreen from './components/screens/NewForYouScreen';
+import YourStackScreen from './components/screens/YourStackScreen';
+import SavedMeditationsScreen from './components/screens/SavedMeditationsScreen';
 import ChakraMeditationPlaylistScreen from './components/screens/ChakraMeditationPlaylistScreen';
 import FocusConcentrationPlaylistScreen from './components/screens/FocusConcentrationPlaylistScreen';
 import EmotionalWellbeingPlaylistScreen from './components/screens/EmotionalWellbeingPlaylistScreen';
@@ -38,6 +48,7 @@ import FocusTimerScreen from './components/screens/FocusTimerScreen';
 import VoiceOrbScreen from './components/screens/VoiceOrbScreen';
 import BreathworkPrepScreen from './components/screens/BreathworkPrepScreen';
 import FocusCompletionScreen from './components/screens/FocusCompletionScreen';
+import KarmaRewardScreen from './components/screens/KarmaRewardScreen';
 import UserTypeSelectionScreen from './components/screens/questionnaire/UserTypeSelectionScreen';
 import RoleSelectionScreen from './components/screens/questionnaire/RoleSelectionScreen';
 import BasicInfoScreen from './components/screens/questionnaire/BasicInfoScreen';
@@ -176,15 +187,26 @@ export const router = createBrowserRouter([
     Component: RootLayout,
     children: [
       { index: true, Component: TodayScreen },
+      { path: 'profile', Component: ProfileScreen },
+      { path: 'profile/help-support', Component: HelpSupportScreen },
+      { path: 'profile/help-support/requests', Component: PreviousRequestsScreen },
+      { path: 'profile/help-support/requests/:requestId', Component: RequestDetailsScreen },
+      { path: 'profile/help-support/acknowledgement', Component: HelpSupportAcknowledgementScreen },
+      { path: 'subscription', Component: SubscriptionScreen },
+      { path: 'subscription/coupon', Component: CouponCodeScreen },
       { path: 'sessions', Component: SessionsScreen },
       { path: 'sessions/class-circle', element: <Navigate to="/home/sessions/league" replace /> },
       { path: 'sessions/league', Component: LeagueScreen },
+      { path: 'sessions/league/first-time', element: <LeagueScreen variant="first-time" /> },
+      { path: 'sessions/league/join-requests', Component: JoinRequestsScreen },
       { path: 'sessions/assign-individually', Component: AssignIndividuallyScreen },
       { path: 'sessions/member-profile', Component: MemberProfileScreen },
       { path: 'bro', Component: BroScreen },
       { path: 'ai-companion', element: <Navigate to="/home/bro" replace /> },
       { path: 'explore', Component: ExploreScreen },
       { path: 'explore/new-for-you', Component: NewForYouScreen },
+      { path: 'explore/your-stack', Component: YourStackScreen },
+      { path: 'explore/:collection', Component: SavedMeditationsScreen },
       { path: 'explore/thought-bank', Component: ThoughtBankScreen },
       { path: 'explore/thought-bank/recent-entries', Component: ThoughtBankRecentEntriesScreen },
       { path: 'explore/thought-bank/write', Component: ThoughtBankWriteEntryScreen },
@@ -213,6 +235,7 @@ export const router = createBrowserRouter([
       { path: 'breathwork-prep', Component: BreathworkPrepScreen },
       { path: 'meditation-prep', Component: BreathworkPrepScreen },
       { path: 'focus-complete', Component: FocusCompletionScreen },
+      { path: 'karma-reward', Component: KarmaRewardScreen },
       { path: 'voice-orb', Component: VoiceOrbScreen },
     ],
   },
